@@ -1,12 +1,12 @@
 import React from 'react'
-import NavigationBar from '../NavigationBar'
+import NavigationSideBar from 'src/components/NavigationSideBar'
 import * as styles from './styles'
 import { Outlet } from 'react-router-dom'
 
 const AppLayout = () => {
   return (
     <React.Fragment>
-      <NavigationBar />
+      <NavigationSideBar />
       <styles.LayoutContainer>
         <Outlet />
       </styles.LayoutContainer>

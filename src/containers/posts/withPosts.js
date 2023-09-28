@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef, useCallback } from 'react'
-import withSpinner from '../spinner/withSpinner'
-import httpClient from '../../utils/httpClient'
+import withSpinner from 'src/containers/spinner/withSpinner'
+import httpClient from 'src/utils/httpClient'
 import withError from 'src/containers/error/withError'
 
 const withPosts = (Component) => (props) => {
