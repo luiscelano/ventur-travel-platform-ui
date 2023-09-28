@@ -2,12 +2,16 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import * as counterActions from 'src/redux/counter/actions'
 import withExampleContent from 'src/containers/withExampleContent'
+import Typography from 'src/components/Typography'
 
 const Home = () => {
   const dispatch = useDispatch()
 
   return (
     <>
+      <Typography type="title" color="dark">
+        Home
+      </Typography>
       <button aria-label="Increment value" onClick={() => dispatch(counterActions.incrementCounter())}>
         Increment
       </button>

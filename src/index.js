@@ -7,11 +7,11 @@ import setupStore from './redux/store'
 import reportWebVitals from './reportWebVitals'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import theme from 'src/config/theme'
-import { globalStyle } from 'src/config/globalStyles'
+import { globalStyles } from 'src/config/globalStyles'
 
 const store = setupStore()
 
-const GlobalStyle = createGlobalStyle`${globalStyle}`
+const GlobalStyle = createGlobalStyle`${globalStyles}`
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
