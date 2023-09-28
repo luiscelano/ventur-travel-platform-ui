@@ -1,4 +1,4 @@
-# react-app-starter-kit
+# ventur-travel-platform-ui
 
 Este proyecto contiene todo lo necesario para construir una aplicación con React y Redux.
 
@@ -15,7 +15,7 @@ Este proyecto contiene todo lo necesario para construir una aplicación con Reac
 
 Es necesario tener instalado [node](https://nodejs.org/es/download) primero
 
-abre la consóla de comandos y asegurate de estar en el directorio del proyecto `react-app-starter-kit`
+abre la consóla de comandos y asegurate de estar en el directorio del proyecto `ventur-travel-platform-ui`
 
 instalar los paquetes:
 
