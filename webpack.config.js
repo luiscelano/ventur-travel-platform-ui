@@ -1,5 +1,4 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const InterpolateHtmlPlugin = require('interpolate-html-plugin')
 const path = require('path')
 
 module.exports = {
@@ -7,13 +6,22 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
   },
   resolve: {
     extensions: ['.*', '.js', '.jsx'],
     alias: {
       src: path.resolve(__dirname, 'src')
     }
+  },
+  devServer: {
+    static: {
+      directory: path.resolve(__dirname, 'dist')
+    },
+    port: 4000,
+    historyApiFallback: true,
+    open: true
   },
   module: {
     rules: [
@@ -48,11 +56,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'public', 'index.html'),
-      favicon: './public/favicon.ico',
-      filename: 'index.html',
-      manifest: './public/manifest.json'
+      template: path.resolve(__dirname, 'src', 'index.html'),
+      filename: 'index.html'
     })
-    // new InterpolateHtmlPlugin({ PUBLIC_URL: 'static' })
   ]
 }
