@@ -5,12 +5,12 @@ import { Outlet } from 'react-router-dom'
 
 const AppLayout = () => {
   return (
-    <React.Fragment>
+    <styles.MainLayout>
       <NavigationSideBar />
       <styles.LayoutContainer>
         <Outlet />
       </styles.LayoutContainer>
-    </React.Fragment>
+    </styles.MainLayout>
   )
 }
 
