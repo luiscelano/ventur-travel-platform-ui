@@ -21,7 +21,7 @@ module.exports = {
     },
     port: 4000,
     historyApiFallback: true,
-    open: true
+    open: false
   },
   module: {
     rules: [
@@ -51,6 +51,10 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource'
       }
     ]
   },

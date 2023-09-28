@@ -1,18 +1,26 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
-import './index.css'
+// import './index.css'
 import { Provider } from 'react-redux'
 import setupStore from './redux/store'
 import reportWebVitals from './reportWebVitals'
+import { ThemeProvider, createGlobalStyle } from 'styled-components'
+import theme from 'src/config/theme'
+import { globalStyle } from 'src/config/globalStyles'
 
 const store = setupStore()
+
+const GlobalStyle = createGlobalStyle`${globalStyle}`
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <ThemeProvider theme={theme}>
+        <App />
+        <GlobalStyle />
+      </ThemeProvider>
     </Provider>
   </React.StrictMode>
 )
