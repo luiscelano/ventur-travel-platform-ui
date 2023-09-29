@@ -8,6 +8,7 @@ export const MainLayout = styled.div`
 export const LayoutContent = styled.div`
   max-width: 1280px;
   padding: 16px;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
   width: 100%;
 `
