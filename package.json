@@ -19,8 +19,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start:dev": "NODE_ENV=development webpack serve --config webpack.config.js",
-    "start:prod": "NODE_ENV=production PORT=4000 react-scripts start",
+    "start:dev": "webpack serve --config webpack.config.js",
+    "start:prod": "react-scripts start",
     "build": "webpack --config webpack.config.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
