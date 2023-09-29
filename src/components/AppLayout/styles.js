@@ -5,8 +5,9 @@ export const MainLayout = styled.div`
   flex-direction: row;
 `
 
-export const LayoutContainer = styled.div`
+export const LayoutContent = styled.div`
   max-width: 1280px;
   padding: 16px;
   margin: auto;
+  width: 100%;
 `

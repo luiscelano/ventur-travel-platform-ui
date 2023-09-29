@@ -4,7 +4,7 @@ import PoppinsMedium from 'src/fonts/PoppinsMedium.ttf'
 import PoppinsBold from 'src/fonts/PoppinsBold.ttf'
 import PoppinsExtraBold from 'src/fonts/PoppinsExtraBold.ttf'
 
-export const globalStyle = `
+export const globalStyles = `
     body {
         margin: 0;
         font-family: Roboto, sans-serif;

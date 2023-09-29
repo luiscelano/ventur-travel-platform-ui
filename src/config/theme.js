@@ -15,6 +15,12 @@ const theme = {
       default: '#A6D88F',
       contrast: '#F2EB80'
     }
+  },
+  fontSize: {
+    small: '14px',
+    medium: '24px',
+    large: '48px',
+    extraLarge: '72px'
   }
 }
 

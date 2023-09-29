@@ -7,9 +7,9 @@ const AppLayout = () => {
   return (
     <styles.MainLayout>
       <NavigationSideBar />
-      <styles.LayoutContainer>
+      <styles.LayoutContent>
         <Outlet />
-      </styles.LayoutContainer>
+      </styles.LayoutContent>
     </styles.MainLayout>
   )
 }
