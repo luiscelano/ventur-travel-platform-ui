@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import * as selectors from 'src/redux/ui/selectors'
 import * as actions from 'src/redux/ui/actions'
 
+/**hola */
 const renderNavigationItem = ({ id, label, redirect, Icon }) => {
   const theme = useTheme()
   const dispatch = useDispatch()
