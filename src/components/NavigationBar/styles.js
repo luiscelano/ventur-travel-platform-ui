@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const NavigationBarContainer = styled.div`
   background-color: gray;
@@ -9,4 +9,4 @@ export const NavigationBarContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-`;
+`

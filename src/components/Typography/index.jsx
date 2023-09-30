@@ -31,7 +31,7 @@ const Typography = ({ children, type, ...props }) => {
 Typography.propTypes = {
   children: PropTypes.node.isRequired,
   type: PropTypes.oneOf(['title', 'subtitle', 'paragraph1', 'paragraph2']).isRequired,
-  color: PropTypes.oneOf(['light', 'dark']),
+  color: PropTypes.oneOf(['light', 'dark', 'default']),
   size: PropTypes.oneOf(['small', 'medium', 'large', 'extraLarge'])
 }
 
