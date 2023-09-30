@@ -7,6 +7,10 @@ import PoppinsExtraBold from 'src/fonts/PoppinsExtraBold.ttf'
 export const globalStyles = `
     body {
         margin: 0;
+        height: 100%;
+    }
+    a {
+        text-decoration: none;
     }
     @font-face {
         font-family: 'Lora Regular';

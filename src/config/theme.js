@@ -5,7 +5,8 @@ const theme = {
     dark: '#2F6C73',
     text: {
       light: '#53A688',
-      dark: '#306C74'
+      dark: '#306C74',
+      default: 'rgba(0, 0, 0, 0.53)'
     },
     background: {
       light: '#FFFFFF',

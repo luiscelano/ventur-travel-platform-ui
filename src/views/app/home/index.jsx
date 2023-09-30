@@ -5,7 +5,7 @@ import Typography from 'src/components/Typography'
 const Home = () => {
   return (
     <>
-      <Typography type="paragraph1" size="small">
+      <Typography type="title" color="dark">
         Bienvenido, user
       </Typography>
       <h1></h1>
