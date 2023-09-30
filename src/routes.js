@@ -6,6 +6,8 @@ import Auth from 'src/views/auth'
 import AppLayout from 'src/components/AppLayout'
 import Posts from 'src/views/app/posts'
 import Sales from 'src/views/app/sales'
+import Packages from './views/app/packages'
+import Subsidiaries from './views/app/subsidiaries'
 
 const routes = createBrowserRouter([
   {
@@ -36,6 +38,14 @@ const routes = createBrowserRouter([
       {
         path: 'sales',
         Component: Sales
+      },
+      {
+        path: 'packages',
+        Component: Packages
+      },
+      {
+        path: 'subsidiaries',
+        Component: Subsidiaries
       }
     ]
   },
