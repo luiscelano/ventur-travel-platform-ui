@@ -14,7 +14,7 @@ const ClientesMod = () => {
       <div>
         <Contenido>
         <Typography type="title" color="dark" size="large">
-          Clientes
+          Clientes .
         </Typography>
       </Contenido>
 
