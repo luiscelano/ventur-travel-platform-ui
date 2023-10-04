@@ -9,6 +9,7 @@ import Sales from 'src/views/app/sales'
 import Packages from './views/app/packages'
 import Subsidiaries from './views/app/subsidiaries'
 import Prueba from './views/app/prueba'
+import PackagesMod from './views/app/packagesModification'
 
 const routes = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const routes = createBrowserRouter([
       {
         path: 'prueba',
         Component: Prueba
+      },
+      {
+        path: 'packagesModification',
+        Component: PackagesMod
       }
     ]
   },
