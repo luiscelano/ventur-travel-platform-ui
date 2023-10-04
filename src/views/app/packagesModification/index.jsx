@@ -22,7 +22,7 @@ const PackagesMod = () => {
         <Typography type="paragraph2">Modifica/Agrega paquetes de viaje</Typography>
       </Contenido>
         <Espacio></Espacio>
-      <Form>
+      <Form action="" method="get">
           
             <Typography type="paragraph2">
               <Input id="Nombre"  type="text" placeholder="Nombre del paquete" />

@@ -10,6 +10,7 @@ import Packages from './views/app/packages'
 import Subsidiaries from './views/app/subsidiaries'
 import Prueba from './views/app/prueba'
 import PackagesMod from './views/app/packagesModification'
+import ClientesMod from './views/app/agregarClientes'
 
 const routes = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const routes = createBrowserRouter([
       {
         path: 'packagesModification',
         Component: PackagesMod
+      },
+      {
+        path: 'agregarClientes',
+        Component: ClientesMod
       }
     ]
   },

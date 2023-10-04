@@ -25,7 +25,7 @@ const Packages = () => {
       </Contenido>
 
         
-          <Form>
+          <Form action="" method="get">
           <Contenido1>
             <Typography type="paragraph2">
               <Input id="Nombre"  type="text" placeholder="Nombre del paquete" />
