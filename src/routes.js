@@ -7,7 +7,7 @@ import AppLayout from 'src/components/AppLayout'
 import Posts from 'src/views/app/posts'
 import Sales from 'src/views/app/sales'
 import Packages from './views/app/packages'
-import Subsidiaries from './views/app/subsidiaries'
+import Metas from './views/app/goals'
 import Prueba from './views/app/prueba'
 import PackagesMod from './views/app/packagesModification'
 import ClientesMod from './views/app/agregarClientes'
@@ -50,8 +50,8 @@ const routes = createBrowserRouter([
         Component: Packages
       },
       {
-        path: 'subsidiaries',
-        Component: Subsidiaries
+        path: 'metas',
+        Component: Metas
       },
       {
         path: 'prueba',
