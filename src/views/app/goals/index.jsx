@@ -1,16 +1,15 @@
-import React from 'react';
+import React from 'react'
 import * as styles from './styles'
-import Typography from 'src/components/Typography';
+import Typography from 'src/components/Typography'
 import Button from 'src/components/Button'
 import Tabla from 'src/components/tabla_metas'
 
-
 const Metas = () => {
-    const titulo  = 'Agregar Metas';
+  const titulo = 'Agregar Metas'
 
-    return(
-        <>
-            <styles.Contenido>
+  return (
+    <>
+      {/* <styles.Contenido>
                 <Typography type='title'>{titulo}</Typography>
                 <styles.infometas>
                     <Typography type='paragraph2'>Agrega una Metas Mensual</Typography>
@@ -19,11 +18,9 @@ const Metas = () => {
                     <Button>Ingresar</Button>
                 </styles.infometas>
                 <Tabla></Tabla>
-            </styles.Contenido>
-            
-        </>
-        
-    )
+            </styles.Contenido> */}
+    </>
+  )
 }
 
-export default Metas;
+export default Metas

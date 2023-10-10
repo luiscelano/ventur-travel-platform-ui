@@ -31,8 +31,8 @@ const navigationItems = [
   },
   {
     id: 5,
-    label: 'Sucursales',
-    redirect: '/app/subsidiaries',
+    label: 'Metas',
+    redirect: '/app/metas',
     Icon: ProfileGroupIcon
   }
 ]

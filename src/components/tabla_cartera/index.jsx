@@ -1,35 +1,54 @@
-import React from 'react';
+import React from 'react'
 import * as styles from './styles'
-import Typography from 'src/components/Typography';
-import {link} from 'react-router-dom';
+import Typography from 'src/components/Typography'
+import { useNavigate } from 'react-router-dom'
 
-
-const Tabla_cartera = () => {
-    return(
-        <>
-            <table>
-                <thead>
-                    <tr>
-                        <styles.header><Typography type='paragraph1'>Fecha de ingreso</Typography></styles.header>
-                        <styles.header><Typography type='paragraph1'>cliente</Typography></styles.header>
-                        <styles.header><Typography type='paragraph1'>Vendedor</Typography></styles.header>
-                        <styles.header><Typography type='paragraph1'>Cantidad total a pagar</Typography></styles.header>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <link to='./app/sales_details'>
-                            <styles.data><Typography type='paragraph2'>7/10/2023</Typography></styles.data>
-                            <styles.data><Typography type='paragraph2'>Keren Rodriguez</Typography></styles.data>
-                            <styles.data><Typography type='paragraph2'>Cristian Diaz</Typography></styles.data>
-                            <styles.data><Typography type='paragraph2'>2,000.00</Typography></styles.data>
-                        </link>
-                    </tr>
-                </tbody>
-            </table>
-        </>
-        
-    )
+const Tabla_cartera = ({ sales = [] }) => {
+  const navigate = useNavigate()
+  const onRowClick = () => {
+    console.log('row clicked')
+    return navigate('/app/salesdetails')
+  }
+  return (
+    <>
+      <table>
+        <thead>
+          <tr>
+            <styles.header>
+              <Typography type="paragraph1">Fecha de ingreso</Typography>
+            </styles.header>
+            <styles.header>
+              <Typography type="paragraph1">cliente</Typography>
+            </styles.header>
+            <styles.header>
+              <Typography type="paragraph1">Vendedor</Typography>
+            </styles.header>
+            <styles.header>
+              <Typography type="paragraph1">Cantidad total a pagar</Typography>
+            </styles.header>
+          </tr>
+        </thead>
+        <tbody>
+          {sales.map((sale) => (
+            <tr onClick={onRowClick} style={{ cursor: 'pointer' }}>
+              <styles.data>
+                <Typography type="paragraph2">{sale.createdAt}</Typography>
+              </styles.data>
+              <styles.data>
+                <Typography type="paragraph2">{sale.cliente.nombre}</Typography>
+              </styles.data>
+              <styles.data>
+                <Typography type="paragraph2">{sale.vendedor.nombre}</Typography>
+              </styles.data>
+              <styles.data>
+                <Typography type="paragraph2">{Number(sale.totalPagar).toFixed(2)}</Typography>
+              </styles.data>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  )
 }
 
-export default Tabla_cartera;
+export default Tabla_cartera

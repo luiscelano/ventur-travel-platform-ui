@@ -14,6 +14,7 @@ import ClientesMod from './views/app/agregarClientes'
 import AssignPerm from './views/app/assignPerm'
 import QueryCustomer from './views/app/queryCustomer'
 import CreateProfile from './views/app/createProfile'
+import SalesDetails from './views/app/sales_details'
 
 const routes = createBrowserRouter([
   {
@@ -65,18 +66,25 @@ const routes = createBrowserRouter([
         path: 'agregarClientes',
         Component: ClientesMod
       },
-      { // Asignar un path adecuado
+      {
+        // Asignar un path adecuado
         path: 'assignPerm',
         Component: AssignPerm
-      },    
-      { // Asignar un path adecuado
+      },
+      {
+        // Asignar un path adecuado
         path: 'queryCustomer',
         Component: QueryCustomer
-      },          
-      { // Asignar un path adecuado
+      },
+      {
+        // Asignar un path adecuado
         path: 'createProfile',
         Component: CreateProfile
-      }         
+      },
+      {
+        path: 'salesdetails',
+        Component: SalesDetails
+      }
     ]
   },
   { path: '/auth', Component: Auth }
