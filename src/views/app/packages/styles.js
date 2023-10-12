@@ -1,69 +1,53 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-export const Contenido = styled.div`
+/* export const Contenido = styled.div `
+    background-color: red;
+    color: white;
+` //crear etiquetas html con estilos incrustados para no llamar a la clase */
 
-text-align: center;
-margin-top: 20px; 
-margin-bottom: 20px;
+export const Contenido = styled.div `
+   width: 100%;
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding-top: 2rem;
+` //crear etiquetas html con estilos incrustados para no llamar a la clase
+
+export const botones = styled.section `
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: center;
+   padding-top: 2rem;
+   margin-bottom: 2rem;
+` //crear etiquetas html con estilos incrustados para no llamar a la clase
+
+export const infometas = styled.section `
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem;
 `
 
-export const Contenido1 = styled.div`
-
-display: flex;
-flex-direction: row; 
-
+export const meta = styled.p `
+    border-radius: 30px;
+    border: none;
+    margin: 0.5rem;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    padding-right: 3rem;
+    background-color: ${(props) => props.theme.color.light };
 `
 
-export const Espacio = styled.div`
-margin-top: 50px;
-`
-
-export const Boton = styled.button`
-margin-left: 100px;
-border: 1px;
-border-radius: 15px;
-background-color: #A6D98F;
-padding: 5px 15px; 
-text-align: center;
-cursor: pointer; 
-`
-
-export const Tabla = styled.table`
-margin: 0 auto;
-border-collapse: collapse;
-`
-
-export const Td = styled.td`
-border: 1px solid #000000; 
-padding: 8px; 
-text-align: left;
-`
-
-export const Tr = styled.tr`
-border: 1px solid #000000; 
-padding: 8px; 
-text-align: left;
-`
-
-export const Thead = styled.thead`
-background-color: #F2EB80;
-`
-
-export const Form = styled.form`
-border: 1px;
-border-radius: 15px;
-background-color: #A6D98F;
-padding: 5px 5px; 
-width: 300px;
-margin: 0 auto;
-
-`
-
-export const Input = styled.input`
-border: 0.5px;
-border-color:#A6D98F;
-border-radius: 15px;
-background-color: #A6D98F;
-padding: 5px 5px; 
-width: 275px;
+export const avance = styled.p `
+    border-radius: 30px;
+    border: none;
+    margin: 0.5rem;
+    padding: 1rem;
+    padding-right: 3rem;
+    background-color: ${(props) => props.theme.color.card.contrast };
+    ::placeholder {
+        color: black;
+    }
 `
