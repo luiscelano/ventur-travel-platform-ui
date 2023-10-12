@@ -9,7 +9,7 @@ const Metas = () => {
 
   return (
     <>
-      {/* <styles.Contenido>
+       <styles.Contenido>
                 <Typography type='title'>{titulo}</Typography>
                 <styles.infometas>
                     <Typography type='paragraph2'>Agrega una Metas Mensual</Typography>
@@ -18,7 +18,7 @@ const Metas = () => {
                     <Button>Ingresar</Button>
                 </styles.infometas>
                 <Tabla></Tabla>
-            </styles.Contenido> */}
+            </styles.Contenido> 
     </>
   )
 }

@@ -1,32 +1,38 @@
 import styled from 'styled-components'
 
-export const NavigationSideBarContainer = styled.div`
-  min-width: 360px !important;
-  background: ${(props) => props.theme.color.background.dark};
-  height: 100vh;
-  position: fixed;
-  z-index: 1;
+export const Contenido = styled.div `
+   width: 100%;
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding-top: 2rem;
+` //crear etiquetas html con estilos incrustados para no llamar a la clase
+
+export const infometas = styled.section `
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem;
 `
 
-export const NavigationSideBarHeading = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  padding: 16px;
+export const metas = styled.input `
+    border-radius: 30px;
+    border: none;
+    margin: 0.5rem;
+    padding: 1rem;
+    padding-right: 3rem;
+    background-color: ${(props) => props.theme.color.light };
 `
 
-export const NavigationSideBarContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  align-items: center;
-  padding-top: 5vh;
-  margin: auto;
-  max-width: 280px;
-`
-
-export const LogoContainer = styled.img`
-  width: 280px;
-  height: 81px;
-  object-fit: cover;
+export const metaind = styled.input `
+    border-radius: 30px;
+    border: none;
+    margin: 0.5rem;
+    padding: 1rem;
+    padding-right: 3rem;
+    background-color: ${(props) => props.theme.color.card.contrast };
+    ::placeholder {
+        color: black;
+    }
 `
