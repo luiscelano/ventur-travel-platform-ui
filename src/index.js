@@ -8,6 +8,7 @@ import reportWebVitals from './reportWebVitals'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import theme from 'src/config/theme'
 import { globalStyles } from 'src/config/globalStyles'
+import { ToastContainer } from 'react-toastify'
 
 const store = setupStore()
 
@@ -19,6 +20,7 @@ root.render(
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <App />
+        <ToastContainer />
         <GlobalStyle />
       </ThemeProvider>
     </Provider>
