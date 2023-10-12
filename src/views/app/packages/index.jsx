@@ -1,69 +1,22 @@
 import React from 'react'
+import * as styles from './styles'
+import Button from 'src/components/Button'
 import Typography from 'src/components/Typography'
-import { Contenido } from './styles'
-import { Contenido1 } from './styles'
-import { Boton } from './styles'
-import { Tabla } from './styles'
-import { Form } from './styles'
-import { Input } from './styles'
-import { Tr } from './styles'
-import { Td } from './styles'
-import { Espacio } from './styles'
-import { Thead } from './styles'
+import Tabla_Paquetes from 'src/components/tabla_paquetes'
+import withPackages from 'src/containers/packages/withPackages'
 
-const Packages = () => {
+const Packages = (props) => {
+  console.log('packages', props.packages)
   return (
-    <div>
-      <Contenido>
-        <Typography type="title" color="dark" size="large">
-          Paquetes de viaje
-        </Typography>
-      </Contenido>
-
-      <Contenido>
-        <Typography type="paragraph2">Consulta paquetes de viaje</Typography>
-      </Contenido>
-
-        
-          <Form action="" method="get">
-          <Contenido1>
-            <Typography type="paragraph2">
-              <Input id="Nombre"  type="text" placeholder="Nombre del paquete" />
-            </Typography>
-            
-              <Boton><Typography type="paragraph2">BUSCAR</Typography></Boton>
-              
-            </Contenido1>
-      
-            </Form>
-
-    <Espacio>
-    </Espacio>
-
-    <Contenido>
-    <Typography type="paragraph2">
-      <Tabla>
-      <Thead>
-      <Tr>
-        <Td>Nombre del Paquete </Td>
-        <Td> Decripcion</Td>
-        <Td>Cantidad de adultos </Td>
-        <Td>Cantidad de niños</Td>
-        <Td>Numero de noches</Td>
-        <Td>Hotel o lugar</Td>
-        <Td>precio</Td>
-      </Tr>
-      </Thead>
-      <Tr></Tr>
-      <Tr></Tr>
-      <Tr></Tr>
-
-      </Tabla>
-      </Typography>
-    </Contenido>
-
-    </div>
+    <>
+      <styles.Contenido>
+        <Typography type="title">Paquetes</Typography>
+        <Typography type="paragraph2">Visualiza los paquetes</Typography>
+        <hr />
+        <Tabla_Paquetes paquetes={props.packages}></Tabla_Paquetes>
+      </styles.Contenido>
+    </>
   )
 }
 
-export default Packages
+export default withPackages(Packages)

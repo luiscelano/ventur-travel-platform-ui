@@ -11,36 +11,20 @@ export const Contenido = styled.div `
    display: flex;
    flex-direction: column;
    align-items: center;
-   padding-top: 2rem;
+   justify-content: baseline;
+   padding-top: 10rem;
 ` //crear etiquetas html con estilos incrustados para no llamar a la clase
 
-export const botones = styled.section `
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   justify-content: center;
-   padding-top: 2rem;
-   margin-bottom: 2rem;
-` //crear etiquetas html con estilos incrustados para no llamar a la clase
-
-export const infometas = styled.section `
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 2rem;
-`
-
-export const meta = styled.p `
+export const usuario = styled.input `
     border-radius: 30px;
     border: none;
     margin: 0.5rem;
-    margin-top: 1.5rem;
     padding: 1rem;
     padding-right: 3rem;
     background-color: ${(props) => props.theme.color.light };
 `
 
-export const avance = styled.p `
+export const psword = styled.input `
     border-radius: 30px;
     border: none;
     margin: 0.5rem;
@@ -50,4 +34,11 @@ export const avance = styled.p `
     ::placeholder {
         color: black;
     }
+`
+
+export const LogoContainer = styled.img`
+  width: 280px;
+  height: 81px;
+  object-fit: cover;
+  margin: 1rem;
 `

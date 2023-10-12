@@ -45,13 +45,13 @@ const ClientesMod = () => {
       </Contenido>
 
       <Contenido>
-        <Typography type="paragraph2">Modifica/Agrega Clientes nuevos</Typography>
+        <Typography type="paragraph2">Agrega Clientes nuevos</Typography>
         {clienteCreado && <p>Cliente creado correctamente</p>}
       </Contenido>
       <Espacio></Espacio>
       <Form onSubmit={onSubmit}>
         <Typography type="paragraph2">
-          <Input id="dpi" type="text" placeholder="DPI" onChange={onChange} />
+          <Input2 id="dpi" type="text" placeholder="DPI" onChange={onChange} />
           <Input id="nombre" type="text" placeholder="Nombre" onChange={onChange} />
 
           <Input2 id="tipo" list="opciones" name="Tipo" placeholder="Selecciona una opción" onChange={onChange} />
@@ -76,9 +76,6 @@ const ClientesMod = () => {
         <Espacio></Espacio>
 
         <Contenido1>
-          <Boton>
-            <Typography type="paragraph2">MODIFICAR</Typography>
-          </Boton>
           <Contenido2>
             <Boton type="submit">
               <Typography type="paragraph2">AGREGAR</Typography>

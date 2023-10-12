@@ -2,7 +2,7 @@ import { createBrowserRouter, redirect } from 'react-router-dom'
 // import redirectIfAuthenticated from './loaders/redirectIfAuthenticated'
 import Home from 'src/views/app/home'
 import Profile from 'src/views/app/profile'
-import Auth from 'src/views/auth'
+//import Auth from 'src/views/auth'
 import AppLayout from 'src/components/AppLayout'
 import Posts from 'src/views/app/posts'
 import Sales from 'src/views/app/sales'
@@ -16,6 +16,8 @@ import QueryCustomer from './views/app/queryCustomer'
 import CreateProfile from './views/app/createProfile'
 import SalesDetails from './views/app/sales_details'
 import UserAccessView from 'src/views/app/access'
+import InicioSesion from './views/auth/login'
+
 
 const routes = createBrowserRouter([
   {
@@ -25,7 +27,7 @@ const routes = createBrowserRouter([
   {
     path: '/app',
     Component: AppLayout,
-    // loader: redirectIfAuthenticated,
+    //loader: redirectIfAuthenticated,
     children: [
       {
         path: '',
@@ -92,7 +94,8 @@ const routes = createBrowserRouter([
       }
     ]
   },
-  { path: '/auth', Component: Auth }
+  { path: '/auth', 
+    Component: InicioSesion }
 ])
 
 export default routes
