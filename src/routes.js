@@ -16,6 +16,7 @@ import QueryCustomer from './views/app/queryCustomer'
 import CreateProfile from './views/app/createProfile'
 import SalesDetails from './views/app/sales_details'
 import InicioSesion from './views/auth/login'
+import AddSales from './views/app/createCartera'
 
 const routes = createBrowserRouter([
   {
@@ -85,7 +86,10 @@ const routes = createBrowserRouter([
       {
         path: 'salesdetails',
         Component: SalesDetails
-      }
+      },{
+        path: 'addSales',
+        Component: AddSales
+      },
     ]
   },
   { path: '/auth', 
