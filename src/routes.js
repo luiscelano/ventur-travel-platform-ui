@@ -15,8 +15,10 @@ import AssignPerm from './views/app/assignPerm'
 import QueryCustomer from './views/app/queryCustomer'
 import CreateProfile from './views/app/createProfile'
 import SalesDetails from './views/app/sales_details'
+import UserAccessView from 'src/views/app/access'
 import InicioSesion from './views/auth/login'
 import AddSales from './views/app/createCartera'
+
 
 const routes = createBrowserRouter([
   {
@@ -90,6 +92,10 @@ const routes = createBrowserRouter([
         path: 'addSales',
         Component: AddSales
       },
+      {
+        path: 'access',
+        Component: UserAccessView
+      }
     ]
   },
   { path: '/auth', 
