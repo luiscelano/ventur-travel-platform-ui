@@ -3,7 +3,7 @@ import React from 'react'
 const PurseIcon = ({ color }) => {
   return (
     <>
-      <svg width="39" height="39" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="24" height="24" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M11.25 3.75L5.625 11.25V37.5C5.625 38.4946 6.02009 39.4484 6.72335 40.1516C7.42661 40.8549 8.38044 41.25 9.375 41.25H35.625C36.6196 41.25 37.5734 40.8549 38.2766 40.1516C38.9799 39.4484 39.375 38.4946 39.375 37.5V11.25L33.75 3.75H11.25Z"
           stroke={color || 'black'}
