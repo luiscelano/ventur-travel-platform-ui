@@ -3,6 +3,9 @@ import HomeIcon from 'src/assets/icons/HomeIcon'
 import ProfileGroupIcon from 'src/assets/icons/ProfileGroupIcon'
 import ProfileIcon from 'src/assets/icons/ProfileIcon'
 import PurseIcon from 'src/assets/icons/PurseIcon'
+import SecurityIcon from 'src/assets/icons/SecurityIcon'
+import getUserType from 'src/utils/getUserType'
+import userTypes from 'src/utils/userTypes'
 
 const navigationItems = [
   {
@@ -37,4 +40,18 @@ const navigationItems = [
   }
 ]
 
-export default navigationItems
+const getNavigationItems = () => {
+  const userType = getUserType()
+
+  if (userType === (userTypes.administrador || userTypes.jefe) && !navigationItems.find(({ id }) => id === 6)) {
+    navigationItems.push({
+      id: 6,
+      label: 'Permisos',
+      redirect: '/app/options',
+      Icon: SecurityIcon
+    })
+  }
+  return navigationItems
+}
+
+export default getNavigationItems

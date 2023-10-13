@@ -1,11 +1,13 @@
 import React from 'react'
 import * as styles from './styles'
 import logo from 'src/assets/ventur-logo.png'
-import navigationItems from 'src/config/navigationItems'
+import getNavigationItems from 'src/config/navigationItems'
 import NavigationItemList from 'src/components/NavigationItemList'
 import CloseIcon from 'src/assets/icons/CloseIcon'
 
 const NavigationSideBar = () => {
+  const navigationItems = getNavigationItems()
+
   return (
     <styles.NavigationSideBarContainer>
       <styles.NavigationSideBarHeading>
