@@ -23,7 +23,7 @@ const Sales = (props) => {
         <styles.botones>
           <Filtros></Filtros>
         </styles.botones>
-        <Link to='/AddSales'>
+        <Link to='/app/AddSales'>
             <Button>Agregar nueva venta</Button>
         </Link>
         <Tabla_cartera sales={props.sales}></Tabla_cartera>
