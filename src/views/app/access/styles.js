@@ -3,7 +3,6 @@ import styled from 'styled-components'
 export const AccessViewContainer = styled.div`
   padding: 0rem;
   margin: 0rem;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,6 +10,6 @@ export const AccessViewContainer = styled.div`
 `
 export const FormContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-end;
 `

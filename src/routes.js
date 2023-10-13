@@ -17,6 +17,7 @@ import SalesDetails from './views/app/sales_details'
 import UserAccessView from 'src/views/app/access'
 import InicioSesion from './views/auth/login'
 import SignUpView from 'src/views/auth/signup'
+import OptionsView from './views/app/options'
 
 const routes = createBrowserRouter([
   {
@@ -70,11 +71,6 @@ const routes = createBrowserRouter([
       },
       {
         // Asignar un path adecuado
-        path: 'assignPerm',
-        Component: AssignPerm
-      },
-      {
-        // Asignar un path adecuado
         path: 'queryCustomer',
         Component: QueryCustomer
       },
@@ -88,8 +84,22 @@ const routes = createBrowserRouter([
         Component: SalesDetails
       },
       {
-        path: 'access',
-        Component: UserAccessView
+        path: 'options',
+        Component: OptionsView,
+        children: [
+          {
+            path: '',
+            loader: () => redirect('access')
+          },
+          {
+            path: 'access',
+            Component: UserAccessView
+          },
+          {
+            path: 'permissions',
+            Component: AssignPerm
+          }
+        ]
       }
     ]
   },
