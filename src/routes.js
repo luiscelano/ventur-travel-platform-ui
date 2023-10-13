@@ -17,7 +17,8 @@ import SalesDetails from './views/app/sales_details'
 import UserAccessView from 'src/views/app/access'
 import InicioSesion from './views/auth/login'
 import SignUpView from 'src/views/auth/signup'
-import OptionsView from './views/app/options'
+import OptionsView from 'src/views/app/options'
+import UsersView from 'src/views/app/permissions'
 
 const routes = createBrowserRouter([
   {
@@ -97,7 +98,7 @@ const routes = createBrowserRouter([
           },
           {
             path: 'permissions',
-            Component: AssignPerm
+            Component: UsersView
           }
         ]
       }
