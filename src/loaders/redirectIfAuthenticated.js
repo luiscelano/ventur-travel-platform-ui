@@ -1,11 +1,12 @@
-import { redirect } from 'react-router-dom';
+import { redirect } from 'react-router-dom'
+import { getIsAuthenticated } from 'src/utils/storage'
 
 function redirectIfAuthenticated() {
-  const isAuthenticated = localStorage.getItem('isAuthenticated');
+  const isAuthenticated = getIsAuthenticated()
 
-  if (!isAuthenticated) return redirect('/auth');
+  if (!isAuthenticated) return redirect('/auth')
 
-  return null;
+  return null
 }
 
-export default redirectIfAuthenticated;
+export default redirectIfAuthenticated

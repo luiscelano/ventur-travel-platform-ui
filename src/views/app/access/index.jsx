@@ -49,14 +49,8 @@ const UserAccessView = (props) => {
         Permisos
       </Typography>
       <styles.FormContainer>
-        <form>
-          <Field
-            id="correo"
-            type="noDisable"
-            size="large"
-            color="background1"
-            placeholder="Correo"
-            onChange={onChange}></Field>
+        <form style={{ display: 'flex', flexDirection: 'row' }}>
+          <Field id="correo" size="large" color="background1" placeholder="Correo" onChange={onChange}></Field>
           <Field
             color="background2"
             size="large"

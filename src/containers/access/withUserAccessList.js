@@ -2,6 +2,7 @@ import { useEffect, useState, useRef, useCallback } from 'react'
 import withSpinner from 'src/containers/spinner/withSpinner'
 import httpClient from 'src/utils/httpClient'
 import withError from 'src/containers/error/withError'
+import getHttpErrorMessage from 'src/utils/getHttpErrorMessage'
 
 const withUserAccessList = (Component) => (props) => {
   const [isLoading, setIsLoading] = useState(true)
@@ -23,7 +24,7 @@ const withUserAccessList = (Component) => (props) => {
       console.error('httpClient error:', error)
       setErrorState({
         failed: true,
-        message: (error.response && error.response.data && error.response.data.message) || error.message
+        message: getHttpErrorMessage(error)
       })
     }
   }, [])
@@ -39,7 +40,7 @@ const withUserAccessList = (Component) => (props) => {
       console.error('httpClient error:', error)
       setErrorState({
         failed: true,
-        message: (error.response && error.response.data && error.response.data.message) || error.message
+        message: getHttpErrorMessage(error)
       })
     }
   }, [])
