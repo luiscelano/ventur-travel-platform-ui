@@ -6,20 +6,17 @@ import Tabla_cartera from 'src/components/tabla_cartera'
 import Filtros from 'src/components/filtros'
 import { Link } from 'react-router-dom'
 import withSales from 'src/containers/sales/withSales'
+import Goal from 'src/components/displaygoal'
 
 const Sales = (props) => {
   console.log('sales', props.sales)
+  console.log('metas', props.metas)
   return (
     <>
       <styles.Contenido>
         <Typography type="title">Cartera</Typography>
         <Typography type="paragraph2">Visualiza las metas realizadas durante el mes</Typography>
-        <styles.meta>
-          <Typography type="paragraph1">Meta del mes</Typography>
-        </styles.meta>
-        <styles.avance>
-          <Typography type="paragraph1">Avance de la meta</Typography>
-        </styles.avance>
+        <Goal metas={props.metas}></Goal>
         <styles.botones>
           <Filtros></Filtros>
         </styles.botones>
