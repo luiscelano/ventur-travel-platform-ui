@@ -2,7 +2,7 @@ import { useEffect, useState, useRef, useCallback } from 'react'
 import withSpinner from 'src/containers/spinner/withSpinner'
 import httpClient from 'src/utils/httpClient'
 import withError from 'src/containers/error/withError'
-import getHttpErrorMessage from 'src/utils/getHttpErrorMessage'
+import getHttpError from 'src/utils/getHttpError'
 import { getProfile } from 'src/utils/storage'
 
 const withUsers = (Component) => (props) => {
@@ -26,7 +26,7 @@ const withUsers = (Component) => (props) => {
       console.error('httpClient error:', error)
       setErrorState({
         failed: true,
-        message: getHttpErrorMessage(error)
+        ...getHttpError(error)
       })
     }
   }, [])
@@ -42,7 +42,7 @@ const withUsers = (Component) => (props) => {
       console.error('httpClient error:', error)
       setErrorState({
         failed: true,
-        message: getHttpErrorMessage(error)
+        ...getHttpError(error)
       })
     }
   }, [])
@@ -61,7 +61,9 @@ const withUsers = (Component) => (props) => {
   const filteredUsers = Array.from(users || []).filter((user) => user.idUsuario !== profile.idUsuario)
   const componentProps = { ...props, usuarios: filteredUsers, permisos: userPermissions, refetchUsers: getUsers }
 
-  return withSpinner(isLoading)(withError(errorState.failed, errorState.message)(Component))(componentProps)
+  return withSpinner(isLoading)(withError(errorState.failed, errorState.message, errorState.status)(Component))(
+    componentProps
+  )
 }
 
 export default withUsers

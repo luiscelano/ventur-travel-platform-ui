@@ -8,7 +8,7 @@ import useQueryParams from 'src/utils/useQueryParams'
 import { getIsAuthenticated, setAccessToken, setProfile, setRefreshToken } from 'src/utils/storage'
 import { toast } from 'react-toastify'
 import httpClient from 'src/utils/httpClient'
-import getHttpErrorMessage from 'src/utils/getHttpErrorMessage'
+import getHttpError from 'src/utils/getHttpError'
 import { Navigate } from 'react-router-dom'
 
 const SignUpView = () => {
@@ -75,7 +75,7 @@ const SignUpView = () => {
           setProfile(response.data.usuario)
         }
       } catch (error) {
-        const errorMessage = getHttpErrorMessage(error)
+        const errorMessage = getHttpError(error).message
         console.error('Error al registrarse:', error)
         setIsSubmitting(false)
         toast.error(errorMessage, {

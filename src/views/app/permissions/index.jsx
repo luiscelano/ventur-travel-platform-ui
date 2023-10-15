@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import httpClient from 'src/utils/httpClient'
 import UsersList from 'src/components/UsersList'
 import withUsers from 'src/containers/users/withUsers'
-import getHttpErrorMessage from 'src/utils/getHttpErrorMessage'
+import getHttpError from 'src/utils/getHttpError'
 
 const UsersView = (props) => {
   const [idTipoUsuario, setIdTipoUsuario] = useState(null)
@@ -48,7 +48,7 @@ const UsersView = (props) => {
       } catch (error) {
         console.error('error al generar Acceso', error)
         setSubmittingAccess(false)
-        toast.error(getHttpErrorMessage(error), {
+        toast.error(getHttpError(error).message, {
           position: toast.POSITION.TOP_RIGHT,
           autoClose: true
         })

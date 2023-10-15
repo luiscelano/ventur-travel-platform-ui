@@ -2,13 +2,14 @@ import { useEffect, useState, useRef, useCallback } from 'react'
 import withSpinner from 'src/containers/spinner/withSpinner'
 import httpClient from 'src/utils/httpClient'
 import withError from 'src/containers/error/withError'
-import getHttpErrorMessage from 'src/utils/getHttpErrorMessage'
+import getHttpError from 'src/utils/getHttpError'
 
 const withUserAccessList = (Component) => (props) => {
   const [isLoading, setIsLoading] = useState(true)
   const [errorState, setErrorState] = useState({
     failed: false,
-    message: null
+    message: null,
+    status: null
   })
   const [accessList, setAccessList] = useState(null)
   const [userPermissions, setUserPermissions] = useState(null)
@@ -24,7 +25,7 @@ const withUserAccessList = (Component) => (props) => {
       console.error('httpClient error:', error)
       setErrorState({
         failed: true,
-        message: getHttpErrorMessage(error)
+        ...getHttpError(error)
       })
     }
   }, [])
@@ -40,7 +41,7 @@ const withUserAccessList = (Component) => (props) => {
       console.error('httpClient error:', error)
       setErrorState({
         failed: true,
-        message: getHttpErrorMessage(error)
+        ...getHttpError(error)
       })
     }
   }, [])
@@ -58,7 +59,9 @@ const withUserAccessList = (Component) => (props) => {
 
   const componentProps = { ...props, accesos: accessList, permisos: userPermissions, getAccessList }
 
-  return withSpinner(isLoading)(withError(errorState.failed, errorState.message)(Component))(componentProps)
+  return withSpinner(isLoading)(withError(errorState.failed, errorState.message, errorState.status)(Component))(
+    componentProps
+  )
 }
 
 export default withUserAccessList

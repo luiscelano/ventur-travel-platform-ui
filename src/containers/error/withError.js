@@ -1,7 +1,8 @@
 import React from 'react'
+import Error from 'src/components/Error'
 
-const withError = (condition, message) => (Component) => (props) => {
-  if (condition) return <div>{message}</div>
+const withError = (condition, message, status) => (Component) => (props) => {
+  if (condition) return <Error {...{ message, status }} />
 
   return <Component {...props} />
 }
