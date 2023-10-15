@@ -1,52 +1,49 @@
 import React, { useState } from 'react'
 import * as styles from './styles'
 import Typography from 'src/components/Typography'
-import UserAccessList from 'src/components/UserAccessList'
-import withUserAccessList from 'src/containers/access/withUserAccessList'
 import Button from 'src/components/Button'
 import Field from 'src/components/Field'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import httpClient from 'src/utils/httpClient'
+import UsersList from 'src/components/UsersList'
+import withUsers from 'src/containers/users/withUsers'
 import getHttpError from 'src/utils/getHttpError'
 
-const UserAccessView = (props) => {
-  const [newAccessValues, setNewAccessValues] = useState({
-    correo: '',
-    id_tipo_usuario: ''
-  })
-  const [submittingAccess, setSubmittingAccess] = useState(false)
+const UsersView = (props) => {
+  const [idTipoUsuario, setIdTipoUsuario] = useState(null)
+  const [selectedUser, setSelectedUser] = useState(null)
+  const [isSubmitting, setSubmittingAccess] = useState(false)
   const [errors, setErrors] = useState({})
-  const onChange = (event) => {
-    setNewAccessValues({
-      ...newAccessValues,
-      [event.target.id]: event.target.value
-    })
+
+  const onSelectTipoUsuario = (event) => {
+    setIdTipoUsuario(event.target.value)
   }
 
   const validateInputs = () => {
     let errors = {}
-    Object.keys(newAccessValues).forEach((key) => {
-      if (!newAccessValues[key].toString().length) errors[key] = `Este campo requerido`
-    })
+    if (!selectedUser) errors.user = 'Selecciona un usuario'
+    if (!idTipoUsuario) errors.permission = 'Selecciona un permiso'
     return errors
   }
 
-  const submitNewAccess = async () => {
+  const updateUser = async () => {
     const inputErrors = validateInputs()
     setErrors(inputErrors)
+
     if (Object.keys(inputErrors).length === 0) {
-      setSubmittingAccess(true)
       try {
-        const response = await httpClient.post('/auth/access', newAccessValues)
+        const response = await httpClient.patch(`/usuarios/${selectedUser.idUsuario}`, {
+          id_tipo_usuario: idTipoUsuario
+        })
         if (response.status === 200) {
-          console.log('Acceso generado correctamente', response.data)
+          console.log('Permiso actualizado correctamente', response.data)
           setSubmittingAccess(false)
-          toast.success('Acceso generado correctamente', {
+          toast.success('Permiso actualizado correctamente', {
             position: toast.POSITION.TOP_RIGHT,
             autoClose: true
           })
-          props.getAccessList()
+          props.refetchUsers()
         }
       } catch (error) {
         console.error('error al generar Acceso', error)
@@ -58,16 +55,24 @@ const UserAccessView = (props) => {
       }
     }
   }
+
   return (
     <styles.AccessViewContainer>
       <Typography type="title" color="dark">
-        Permisos
+        Modificar Permisos
       </Typography>
       <styles.FormContainer>
         <form style={{ display: 'flex', flexDirection: 'row' }}>
           <div style={{ textAlign: 'center' }}>
-            <Field id="correo" size="large" color="background1" placeholder="Correo" onChange={onChange} />
-            {errors.correo && <span style={{ color: 'red' }}>{errors.correo}</span>}
+            <Field
+              id="usuario"
+              size="large"
+              color="background1"
+              value={selectedUser ? `${selectedUser.nombre} ${selectedUser.apellido}` : ''}
+              placeholder="Usuario"
+              disabled={true}
+            />
+            {errors.user && <span style={{ color: 'red' }}>{errors.user}</span>}
           </div>
           <div style={{ textAlign: 'center' }}>
             <Field
@@ -76,9 +81,9 @@ const UserAccessView = (props) => {
               id="id_tipo_usuario"
               list="id_tipo_usuario_opciones"
               placeholder="Selecciona el tipo de permiso"
-              onChange={onChange}
+              onChange={onSelectTipoUsuario}
             />
-            {errors.id_tipo_usuario && <span style={{ color: 'red' }}>{errors.id_tipo_usuario}</span>}
+            {errors.permission && <span style={{ color: 'red' }}>{errors.permission}</span>}
           </div>
           <datalist id="id_tipo_usuario_opciones">
             {Array.from(props.permisos || []).map((permiso, index) => (
@@ -86,14 +91,13 @@ const UserAccessView = (props) => {
             ))}
           </datalist>
         </form>
-        <Button size="medium" color="background1" onClick={submitNewAccess} disabled={submittingAccess}>
-          {!submittingAccess ? 'Generar Acceso' : 'Cargando...'}
+        <Button onClick={updateUser} size="medium" color="background1" disabled={isSubmitting}>
+          {!isSubmitting ? 'Modificar permiso' : 'Cargando...'}
         </Button>
       </styles.FormContainer>
-      <UserAccessList accessList={props.accesos} />
-      {/* <ToastContainer /> */}
+      <UsersList onSelect={setSelectedUser} users={props.usuarios} />
     </styles.AccessViewContainer>
   )
 }
 
-export default withUserAccessList(UserAccessView)
+export default withUsers(UsersView)

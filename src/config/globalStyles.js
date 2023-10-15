@@ -47,4 +47,10 @@ export const globalStyles = `
         font-weight: 800;
         font-style: normal;
     }
+    label {
+        font-family: 'Poppins Medium';
+    }
+    input, label {
+        display:block;
+    }
 `

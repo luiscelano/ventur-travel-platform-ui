@@ -3,7 +3,7 @@ import React from 'react'
 const BoxIcon = ({ color }) => {
   return (
     <>
-      <svg width="39" height="39" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="24" height="24" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M30.9375 17.625L14.0625 7.89374"
           stroke={color || 'black'}

@@ -1,8 +1,7 @@
 import { createBrowserRouter, redirect } from 'react-router-dom'
-// import redirectIfAuthenticated from './loaders/redirectIfAuthenticated'
+import redirectIfAuthenticated from './loaders/redirectIfAuthenticated'
 import Home from 'src/views/app/home'
 import Profile from 'src/views/app/profile'
-//import Auth from 'src/views/auth'
 import AppLayout from 'src/components/AppLayout'
 import Posts from 'src/views/app/posts'
 import Sales from 'src/views/app/sales'
@@ -17,8 +16,10 @@ import CreateProfile from './views/app/createProfile'
 import SalesDetails from './views/app/sales_details'
 import UserAccessView from 'src/views/app/access'
 import InicioSesion from './views/auth/login'
+import SignUpView from 'src/views/auth/signup'
+import OptionsView from 'src/views/app/options'
+import UsersView from 'src/views/app/permissions'
 import AddSales from './views/app/createCartera'
-
 
 const routes = createBrowserRouter([
   {
@@ -28,7 +29,7 @@ const routes = createBrowserRouter([
   {
     path: '/app',
     Component: AppLayout,
-    //loader: redirectIfAuthenticated,
+    loader: redirectIfAuthenticated,
     children: [
       {
         path: '',
@@ -72,11 +73,6 @@ const routes = createBrowserRouter([
       },
       {
         // Asignar un path adecuado
-        path: 'assignPerm',
-        Component: AssignPerm
-      },
-      {
-        // Asignar un path adecuado
         path: 'queryCustomer',
         Component: QueryCustomer
       },
@@ -93,13 +89,42 @@ const routes = createBrowserRouter([
         Component: AddSales
       },
       {
-        path: 'access',
-        Component: UserAccessView
+        path: 'options',
+        Component: OptionsView,
+        children: [
+          {
+            path: '',
+            loader: () => redirect('access')
+          },
+          {
+            path: 'access',
+            Component: UserAccessView
+          },
+          {
+            path: 'permissions',
+            Component: UsersView
+          }
+        ]
       }
     ]
   },
-  { path: '/auth', 
-    Component: InicioSesion }
+  {
+    path: '/auth',
+    children: [
+      {
+        path: '',
+        loader: () => redirect('login')
+      },
+      {
+        path: 'login',
+        Component: InicioSesion
+      },
+      {
+        path: 'signup',
+        Component: SignUpView
+      }
+    ]
+  }
 ])
 
 export default routes

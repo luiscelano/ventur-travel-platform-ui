@@ -7,14 +7,14 @@ import { useTheme } from 'styled-components'
 const renderNavigationItem = ({ id, label, redirect, Icon }) => {
   const theme = useTheme()
 
-  const location = useLocation() 
-  const selected = location.pathname === redirect
+  const location = useLocation()
+  const selected = location.pathname.includes(redirect)
 
   return (
-    <NavLink key={id} to={redirect}>
+    <NavLink key={`navigation-item-${id}`} to={redirect}>
       <styles.NavigationItemContainer>
         <Icon color={selected ? theme.color.main : theme.color.text.default} />
-        <Typography type="paragraph1" color={selected ? 'light' : 'default'}>
+        <Typography type="paragraph1" size="small" color={selected ? 'light' : 'default'}>
           {label}
         </Typography>
       </styles.NavigationItemContainer>
