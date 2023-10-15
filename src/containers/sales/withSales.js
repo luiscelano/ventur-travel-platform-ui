@@ -36,7 +36,7 @@ const withSales = (Component) => (props) => {
     try {
       const response = await httpClient.get('/metas')
       if (response.status === 200) {
-        setMeta(response.data.meta)
+        setMeta(response.data.meta || {})
       }
     } catch (error) {
       console.error('httpClient error:', error)

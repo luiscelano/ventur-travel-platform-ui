@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 const Tabla_cartera = ({ sales = [] }) => {
   const navigate = useNavigate()
+  //const id_vendor = { idv: sales.id_usuario}
   const onRowClick = () => {
     console.log('row clicked')
     return navigate('/app/salesdetails')

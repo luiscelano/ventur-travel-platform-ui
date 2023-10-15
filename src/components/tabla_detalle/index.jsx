@@ -3,7 +3,7 @@ import * as styles from './styles'
 import Typography from 'src/components/Typography';
 
 
-const Tabla_detalle = () => {
+const Tabla_detalle = ({ sales = []}) => {
     return(
         <>
             <table>
@@ -19,15 +19,18 @@ const Tabla_detalle = () => {
                     </tr>
                 </thead>
                 <tbody>
+                    {sales.map((sale) => (
                     <tr>
-                        <styles.data><Typography type='paragraph2'>Roatan</Typography></styles.data>
-                        <styles.data><Typography type='paragraph2'>4</Typography></styles.data>
-                        <styles.data><Typography type='paragraph2'>01/10/2023</Typography></styles.data>
-                        <styles.data><Typography type='paragraph2'>10/10/2023</Typography></styles.data>
-                        <styles.data><Typography type='paragraph2'>GT</Typography></styles.data>
-                        <styles.data><Typography type='paragraph2'>2</Typography></styles.data>
-                        <styles.data><Typography type='paragraph2'>2,000.00</Typography></styles.data>
+                        <styles.data><Typography type='paragraph2'>{sale.paquete.nombre}</Typography></styles.data>
+                        <styles.data><Typography type='paragraph2'>{sale.cantidadTuristas}</Typography></styles.data>
+                        <styles.data><Typography type='paragraph2'></Typography></styles.data>
+                        <styles.data><Typography type='paragraph2'></Typography></styles.data>
+                        <styles.data><Typography type='paragraph2'>{sale.pais.descripcion}</Typography></styles.data>
+                        <styles.data><Typography type='paragraph2'>{sale.cantidadPaquetes}</Typography></styles.data>
+                        <styles.data><Typography type='paragraph2'></Typography></styles.data>
                     </tr>
+                    ))}
+                    
                 </tbody>
             </table>
         </>

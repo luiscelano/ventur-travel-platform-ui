@@ -34,6 +34,16 @@ export const cliente = styled.select `
     background-color: ${(props) => props.theme.color.card.contrast };
 `
 
+export const pais = styled.select `
+    border-radius: 30px;
+    border: none;
+    margin: 0.5rem;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    padding-right: 3rem;
+    background-color: ${(props) => props.theme.color.light };
+`
+
 export const turistas = styled.input `
     border-radius: 30px;
     border: none;
@@ -51,6 +61,9 @@ export const numpaquete = styled.input `
     padding-right: 3rem;
     background-color: ${(props) => props.theme.color.light };
 `
-
+export const Formulario = styled.form `
+    display: flex;
+    flex-direction: column;
+`
 
 
