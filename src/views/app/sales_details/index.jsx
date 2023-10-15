@@ -36,10 +36,6 @@ const Sales = (props) => {
   }
 
   if(sales){
-    console.log('id ', idCartera)
-    const id = parseInt(idCartera)
-    console.log(id)
-
     const sale = sales.findIndex(sale => sale.idCartera === idCartera);
     if (sale !== -1) {
       console.log('index ', sale)
