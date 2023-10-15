@@ -2,6 +2,7 @@ import { useEffect, useState, useRef, useCallback } from 'react'
 import withSpinner from 'src/containers/spinner/withSpinner'
 import httpClient from 'src/utils/httpClient'
 import withError from 'src/containers/error/withError'
+//use state permite modificar datos dentro del dom sin que afecte la pagina
 
 const withSales = (Component) => (props) => {
   const [isLoading, setIsLoading] = useState(true)
@@ -9,6 +10,7 @@ const withSales = (Component) => (props) => {
     failed: false,
     message: null
   })
+  //setSales es un evento que asigna la venta
   const [sales, setSales] = useState(null)
   const salesRef = useRef(false)
 
@@ -27,6 +29,24 @@ const withSales = (Component) => (props) => {
     }
   }, [])
 
+  const [metas, setMeta] = useState(null)
+  const metasRef = useRef(false)
+
+  const getmetas = useCallback(async () => {
+    try {
+      const response = await httpClient.get('/metas')
+      if (response.status === 200) {
+        setMeta(response.data.meta || {})
+      }
+    } catch (error) {
+      console.error('httpClient error:', error)
+      setErrorState({
+        failed: true,
+        message: error.message
+      })
+    }
+  }, [])
+
   useEffect(() => {
     if (salesRef.current) return
     salesRef.current = true
@@ -35,10 +55,17 @@ const withSales = (Component) => (props) => {
   }, [getSales])
 
   useEffect(() => {
-    if (isLoading && (sales || errorState.failed)) setIsLoading(false)
-  }, [sales, errorState, isLoading])
+    if (metasRef.current) return
+    metasRef.current = true
+    setIsLoading(true)
+    getmetas()
+  }, [getmetas])
 
-  const componentProps = { ...props, sales }
+  useEffect(() => {
+    if (isLoading && (sales || errorState.failed) && (metas || errorState.failed)) setIsLoading(false)
+  }, [sales, metas, errorState, isLoading])
+
+  const componentProps = { ...props, sales, metas } //manda a llamar los datos
 
   return withSpinner(isLoading)(withError(errorState.failed, errorState.message)(Component))(componentProps)
 }
