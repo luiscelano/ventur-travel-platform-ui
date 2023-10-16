@@ -3,8 +3,9 @@ import * as styles from './styles'
 import Typography from 'src/components/Typography'
 import Button from 'src/components/Button'
 import Tabla from 'src/components/tabla_metas'
-
+import withGoals from 'src/containers/goals/withGoals'
 const Metas = () => {
+  console.log('goals', props.goals)
   const titulo = 'Agregar Metas'
 
   return (
@@ -23,4 +24,4 @@ const Metas = () => {
   )
 }
 
-export default Metas
+export default withGoals(Metas)
