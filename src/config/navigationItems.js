@@ -1,5 +1,6 @@
 import BoxIcon from 'src/assets/icons/BoxIcon'
 import HomeIcon from 'src/assets/icons/HomeIcon'
+import goalIcon from 'src/assets/icons/pocket'
 import ProfileGroupIcon from 'src/assets/icons/ProfileGroupIcon'
 import ProfileIcon from 'src/assets/icons/ProfileIcon'
 import PurseIcon from 'src/assets/icons/PurseIcon'
@@ -36,6 +37,12 @@ const navigationItems = [
     id: 5,
     label: 'Metas',
     redirect: '/app/metas',
+    Icon: goalIcon
+  },
+  {
+    id: 6,
+    label: 'Clientes',
+    redirect: '/app/queryCustomer',
     Icon: ProfileGroupIcon
   }
 ]
