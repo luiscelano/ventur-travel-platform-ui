@@ -33,14 +33,14 @@ const navigationItems = [
     redirect: '/app/packages',
     Icon: BoxIcon
   },
-  {
+  /* {
     id: 5,
     label: 'Metas',
     redirect: '/app/metas',
     Icon: goalIcon
-  },
+  }, */
   {
-    id: 6,
+    id: 5,
     label: 'Clientes',
     redirect: '/app/queryCustomer',
     Icon: ProfileGroupIcon
@@ -51,11 +51,18 @@ const getNavigationItems = () => {
   const userType = getUserType()
 
   if (userType === (userTypes.administrador || userTypes.jefe) && !navigationItems.find(({ id }) => id === 6)) {
-    navigationItems.push({
+    navigationItems.push(
+    {
       id: 6,
       label: 'Permisos',
       redirect: '/app/options',
       Icon: SecurityIcon
+    },
+    {
+      id: 7,
+      label: 'Metas',
+      redirect: '/app/metas',
+      Icon: goalIcon
     })
   }
   return navigationItems
