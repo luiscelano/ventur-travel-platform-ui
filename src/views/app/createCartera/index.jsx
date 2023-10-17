@@ -8,6 +8,11 @@ import httpClient from 'src/utils/httpClient'
 //import Filtros from 'src/components/filtros'
 
 const AddSales = (props) => {
+ //const { datos_cartera } = props;
+  const paquetes = props.paquetes;
+  const metas = props.metas;
+  console.log('datos ', paquetes)
+  console.log('datos1 ', metas)
 
   const [values, setValues] = useState({
     id_pais: 1
@@ -42,6 +47,9 @@ const AddSales = (props) => {
         <styles.Formulario onSubmit={onSubmit}>
           <styles.paquete id='id_paquete' onChange={onChange}>
               <option value="" disabled selected><Typography type='paragraph1'>paquete</Typography></option>
+              {/* {datos.map((paquete) => (
+                 <option value={paquete.idPaquete}>{paquete.nombre}</option>
+              ))} */}
               <option value={1}>Paquete 1</option>
               <option value={2}>Paquete 2</option>
           </styles.paquete>

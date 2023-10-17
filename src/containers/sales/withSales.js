@@ -47,6 +47,24 @@ const withSales = (Component) => (props) => {
     }
   }, [])
 
+  const [paquetes, setPaquetes] = useState(null)
+  const paquetesRef = useRef(false)
+
+  const getpaquetes = useCallback(async () => {
+    try {
+      const response = await httpClient.get('/paquetes')
+      if (response.status === 200) {
+        setPaquetes(response.data.meta || {})
+      }
+    } catch (error) {
+      console.error('httpClient error:', error)
+      setErrorState({
+        failed: true,
+        message: error.message
+      })
+    }
+  }, [])
+
   useEffect(() => {
     if (salesRef.current) return
     salesRef.current = true
@@ -62,10 +80,17 @@ const withSales = (Component) => (props) => {
   }, [getmetas])
 
   useEffect(() => {
-    if (isLoading && (sales || errorState.failed) && (metas || errorState.failed)) setIsLoading(false)
-  }, [sales, metas, errorState, isLoading])
+    if (paquetesRef.current) return
+    paquetesRef.current = true
+    setIsLoading(true)
+    getpaquetes()
+  }, [getpaquetes])
 
-  const componentProps = { ...props, sales, metas } //manda a llamar los datos
+  useEffect(() => {
+    if (isLoading && (sales || errorState.failed) && (metas || errorState.failed) && (paquetes || errorState.failed)) setIsLoading(false)
+  }, [sales, metas, paquetes, errorState, isLoading])
+
+  const componentProps = { ...props, sales, metas, paquetes } //manda a llamar los datos
 
   return withSpinner(isLoading)(withError(errorState.failed, errorState.message)(Component))(componentProps)
 }
