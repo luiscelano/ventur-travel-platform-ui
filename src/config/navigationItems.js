@@ -42,8 +42,12 @@ const navigationItems = [
 
 const getNavigationItems = () => {
   const userType = getUserType()
-
-  if (userType === (userTypes.administrador || userTypes.jefe) && !navigationItems.find(({ id }) => id === 6)) {
+  console.log('userType', userType)
+  console.log(userType === (userTypes.administrador || userTypes.jefe))
+  if (
+    (userType === userTypes.administrador || userType === userTypes.jefe) &&
+    !navigationItems.find(({ id }) => id === 6)
+  ) {
     navigationItems.push({
       id: 6,
       label: 'Permisos',
