@@ -16,7 +16,7 @@ const withGoals = (Component) => (props) => {
     try {
       const response = await httpClient.get('/metas')
       if (response.status === 200) {
-        setGoals(response.data.metas)
+        setGoals(response.data.meta)
       }
     } catch (error) {
       console.error('httpClient error:', error)

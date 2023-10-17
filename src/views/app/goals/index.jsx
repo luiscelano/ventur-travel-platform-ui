@@ -4,7 +4,7 @@ import Typography from 'src/components/Typography'
 import Button from 'src/components/Button'
 import Tabla from 'src/components/tabla_metas'
 import withGoals from 'src/containers/goals/withGoals'
-const Metas = () => {
+const Metas = (props) => {
   console.log('goals', props.goals)
   const titulo = 'Agregar Metas'
 
