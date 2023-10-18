@@ -9,14 +9,13 @@ const withGoals = (Component) => (props) => {
     failed: false,
     message: null
   })
-  const [goals, setGoals] = useState(null)
-  const goalsRef = useRef(false)
+  const [goals, setGoals] = useState([]) 
 
   const getGoals = useCallback(async () => {
     try {
-      const response = await httpClient.get('/metas')
+      const response = await httpClient.get('/metas/all') 
       if (response.status === 200) {
-        setGoals(response.data.meta)
+        setGoals(response.data.metas || []);
       }
     } catch (error) {
       console.error('httpClient error:', error)
@@ -28,17 +27,15 @@ const withGoals = (Component) => (props) => {
   }, [])
 
   useEffect(() => {
-    if (goalsRef.current) return
-    goalsRef.current = true
     setIsLoading(true)
     getGoals()
   }, [getGoals])
 
   useEffect(() => {
-    if (isLoading && (goals || errorState.failed)) setIsLoading(false)
+    if (isLoading || errorState.failed) setIsLoading(false)
   }, [goals, errorState, isLoading])
 
-  const componentProps = { ...props, goals }
+  const componentProps = { ...props, goals, getGoals }
 
   return withSpinner(isLoading)(withError(errorState.failed, errorState.message)(Component))(componentProps)
 }
