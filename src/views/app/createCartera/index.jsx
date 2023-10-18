@@ -12,7 +12,6 @@ const AddSales = (props) => {
   const paquetes = props.paquetes;
   const metas = props.metas;
   const clientes = props.clientes;
-  console.log('datos1 ', paquetes)
 
   const [values, setValues] = useState({
     id_pais: 1

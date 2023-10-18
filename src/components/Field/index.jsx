@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import StyledInput from './styles'
 
 const Field = ({ type, size, color, ...props }) => {
-  return <StyledInput size={size} color={color} {...props} />
+  return <StyledInput size={size} color={color} type={type || 'text'} {...props} />
 }
 
 Field.propTypes = {
