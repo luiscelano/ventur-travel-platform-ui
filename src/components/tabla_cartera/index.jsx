@@ -6,9 +6,11 @@ import { useNavigate } from 'react-router-dom'
 const Tabla_cartera = ({ sales = [] }) => {
   const navigate = useNavigate()
   //const id_vendor = { idv: sales.id_usuario}
-  const onRowClick = () => {
+  const onRowClick = (idCartera) => {
     console.log('row clicked')
-    return navigate('/app/salesdetails')
+    //return navigate('/app/salesdetails/')
+    return navigate('/app/salesdetails', {state: {idCartera}});
+    //return navigate(`/app/salesdetails/${idCartera}`)
   }
   return (
     <>
@@ -29,9 +31,10 @@ const Tabla_cartera = ({ sales = [] }) => {
             </styles.header>
           </tr>
         </thead>
-        <tbody>
+        <>
           {sales.map((sale) => (
-            <tr onClick={onRowClick} style={{ cursor: 'pointer' }}>
+            //<tr onClick={onRowClick} style={{ cursor: 'pointer' }}>
+            <tr onClick={() => onRowClick(sale.idCartera)} style={{ cursor: 'pointer' }}>
               <styles.data>
                 <Typography type="paragraph2">{sale.createdAt}</Typography>
               </styles.data>
@@ -46,7 +49,7 @@ const Tabla_cartera = ({ sales = [] }) => {
               </styles.data>
             </tr>
           ))}
-        </tbody>
+        </>
       </table>
     </>
   )
