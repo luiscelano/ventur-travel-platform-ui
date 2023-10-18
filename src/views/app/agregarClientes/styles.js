@@ -32,7 +32,16 @@ background-color:#F2EB80;
 
 `
 
-
+export const Cliente = styled.select `
+    border-radius: 30px;
+    border: none;
+    margin: 0.5rem;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    padding-right: 3rem;
+    width: 275px;
+    background-color: ${(props) => props.theme.color.card.contrast };
+`
 
 export const Espacio = styled.div`
 margin-top: 50px;
