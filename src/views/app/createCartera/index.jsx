@@ -11,8 +11,8 @@ const AddSales = (props) => {
  //const { datos_cartera } = props;
   const paquetes = props.paquetes;
   const metas = props.metas;
-  console.log('datos ', paquetes)
-  console.log('datos1 ', metas)
+  const clientes = props.clientes;
+  console.log('datos1 ', paquetes)
 
   const [values, setValues] = useState({
     id_pais: 1
@@ -47,23 +47,26 @@ const AddSales = (props) => {
         <styles.Formulario onSubmit={onSubmit}>
           <styles.paquete id='id_paquete' onChange={onChange}>
               <option value="" disabled selected><Typography type='paragraph1'>paquete</Typography></option>
-              {/* {datos.map((paquete) => (
+              {paquetes.map((paquete) => (
                  <option value={paquete.idPaquete}>{paquete.nombre}</option>
-              ))} */}
-              <option value={1}>Paquete 1</option>
-              <option value={2}>Paquete 2</option>
+              ))}
+              {/* <option value={1}>Paquete 1</option>
+              <option value={2}>Paquete 2</option> */}
           </styles.paquete>
           <styles.turistas id='cantidadTuristas' type='number' step='0.01' placeholder='Num. de Turistas' onChange={onChange}></styles.turistas>
           <styles.numpaquete id="cantidadPaquetes" type='number' step='0.01' placeholder='Cantidad de paquetes' onChange={onChange}></styles.numpaquete>
           <styles.cliente id="id_cliente" onChange={onChange}>
               <option value="" disabled selected><Typography type='paragraph1'>cliente</Typography></option>
-              <option value={1}>Paquete 1</option>
-              <option value={2}>Paquete 2</option>
+              {clientes.map((cliente) => (
+                 <option value={cliente.idCliente}>{cliente.nombre}</option>
+              ))}
+              {/* <option value={1}>Paquete 1</option>
+              <option value={2}>Paquete 2</option> */}
           </styles.cliente>
           <styles.pais id="id_pais" onChange={onChange}>
               <option value="" disabled selected><Typography type='paragraph1'>Pais</Typography></option>
-              <option value={1}>GT</option>
-              <option value={2}>SV</option>
+              <option value={1}>Guatemala</option>
+              <option value={2}>El Salvador</option>
           </styles.pais>
           <Button type="submit">Agregar venta</Button>
           {ventacreada ? <p>Venta agregada correctamente!</p> : <p>hubo un error :s</p>}
