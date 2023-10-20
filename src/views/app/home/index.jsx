@@ -9,9 +9,9 @@ const Home = () => {
   return (
     <>
       <Typography type="title" color="dark">
-        Bienvenido, {user.nombre}
+        Buen día, {user.nombre}
       </Typography>
-      <h1></h1>
+      
     </>
   )
 }

@@ -2,7 +2,6 @@ import React from 'react'
 import * as styles from './styles'
 import Typography from 'src/components/Typography'
 import InfoField from 'src/components/userInfo'
-import Button from 'src/components/Button'
 import { getProfile } from 'src/utils/storage'
 
 const Profile = () => {

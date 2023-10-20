@@ -1,5 +1,20 @@
 import styled from 'styled-components'
 
+export const Contenido = styled.div `
+   width: 100%;
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+`
+
+export const orden = styled.section `
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   padding-bottom: 2rem;
+`
+
 export const mes = styled.select `
     background-color: ${(props) => props.theme.color.light };
     border: none;
