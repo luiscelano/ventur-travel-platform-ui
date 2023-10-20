@@ -6,6 +6,9 @@ import withFilters from 'src/containers/filters/withFilters'
 
 //const Button = (props) => {
 const Filtros = (props) => {
+    console.log('vendedores ', props.users)
+    const vendedores = props.users
+    const clientes = props.clientes
     const mesesDelAnio = [
         { value: '01', label: 'enero' },
         { value: '02', label: 'febrero' },
@@ -48,18 +51,18 @@ const Filtros = (props) => {
                             {anio}
                         </option>
                     ))}
-                    {/* <option value='2023'>2023</option>
-                    <option value='2022'>2022</option> */}
                 </styles.anio>
-                <styles.vendedor>
+                <styles.vendedor name='vendedor' value={props.vendedor_filtro} onChange={(e) => props.setPorVendedor(e.target.value)}>
                     <option value="" disabled selected><Typography type='paragraph1'>vendedor</Typography></option>
-                    <option value='id vendedor 1'>Cristian Diaz</option>
-                    <option value='id vendedor 2'>Keren Rodriguez</option>
+                    {vendedores.map((vendedor) => (
+                        <option value={vendedor.idUsuario}>{vendedor.nombre},{vendedor.apellido}</option>
+                    ))}
                 </styles.vendedor>
-                <styles.cliente>
+                <styles.cliente name='cliente' value={props.clientes_filtro} onChange={(e) => props.setPorCliente(e.target.value)}>
                     <option value="" disabled selected><Typography type='paragraph1'>cliente</Typography></option>
-                    <option value='id vendedor 1'>Cristian Diaz</option>
-                    <option value='id vendedor 2'>Keren Rodriguez</option>
+                    {clientes.map((cliente) => (
+                        <option value={cliente.idCliente}>{cliente.nombre}</option>
+                    ))}
                 </styles.cliente>
             </styles.orden>
             <Tabla_cartera sales={props.sales}></Tabla_cartera>
