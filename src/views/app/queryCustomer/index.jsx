@@ -6,6 +6,8 @@ import { Header } from './styles'
 import { Row } from './styles'
 import Typography from 'src/components/Typography'
 import Field from 'src/components/Field'
+import { Link } from 'react-router-dom'
+import Button from 'src/components/Button'
 
 const QueryCustomer = () => {
   return (
@@ -21,7 +23,9 @@ const QueryCustomer = () => {
           </Typography>
           <Field size="large" color="background1"></Field>
         </Section1>
-
+        <Link to='/app/agregarClientes'>
+            <Button>Agregar nuevo Cliente</Button>
+        </Link>
         <Table>
           <tr>
             <Header>Nombre</Header>
