@@ -8,11 +8,15 @@ import { getRefreshToken } from 'src/utils/storage'
 const LogoutButton = () => {
   const navigate = useNavigate()
   const logout = async () => {
-    await httpClient.delete('/auth/logout', {
-      data: {
-        token: getRefreshToken()
-      }
-    })
+    try {
+      await httpClient.delete('/auth/logout', {
+        data: {
+          token: getRefreshToken()
+        }
+      })
+    } catch (error) {
+      console.error(error)
+    }
     localStorage.removeItem('accessToken')
     localStorage.removeItem('refreshToken')
     localStorage.removeItem('profile')

@@ -50,4 +50,19 @@ export const refreshTokenInterceptor = httpClient.interceptors.response.use(
   }
 )
 
+httpClient.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response) {
+      return Promise.reject(error)
+    } else if (error.request) {
+      console.log(error.request)
+      return Promise.reject(error)
+    }
+    return Promise.reject({
+      message: 'Servidor no disponible por el momento.'
+    })
+  }
+)
+
 export default httpClient
