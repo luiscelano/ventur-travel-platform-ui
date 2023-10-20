@@ -47,6 +47,42 @@ const withSales = (Component) => (props) => {
     }
   }, [])
 
+  const [paquetes, setPaquetes] = useState(null)
+  const paquetesRef = useRef(false)
+
+  const getpaquetes = useCallback(async () => {
+    try {
+      const response = await httpClient.get('/paquetes')
+      if (response.status === 200) {
+        setPaquetes(response.data.paquetes || {})
+      }
+    } catch (error) {
+      console.error('httpClient error:', error)
+      setErrorState({
+        failed: true,
+        message: error.message
+      })
+    }
+  }, [])
+
+  const [clientes, setClientes] = useState(null)
+  const clientesRef = useRef(false)
+
+  const getclientes = useCallback(async () => {
+    try {
+      const response = await httpClient.get('/clientes')
+      if (response.status === 200) {
+        setClientes(response.data.clientes || {})
+      }
+    } catch (error) {
+      console.error('httpClient error:', error)
+      setErrorState({
+        failed: true,
+        message: error.message
+      })
+    }
+  }, [])
+
   useEffect(() => {
     if (salesRef.current) return
     salesRef.current = true
@@ -62,10 +98,24 @@ const withSales = (Component) => (props) => {
   }, [getmetas])
 
   useEffect(() => {
-    if (isLoading && (sales || errorState.failed) && (metas || errorState.failed)) setIsLoading(false)
-  }, [sales, metas, errorState, isLoading])
+    if (paquetesRef.current) return
+    paquetesRef.current = true
+    setIsLoading(true)
+    getpaquetes()
+  }, [getpaquetes])
 
-  const componentProps = { ...props, sales, metas } //manda a llamar los datos
+  useEffect(() => {
+    if (clientesRef.current) return
+    clientesRef.current = true
+    setIsLoading(true)
+    getclientes()
+  }, [getclientes])
+
+  useEffect(() => {
+    if (isLoading && (sales || errorState.failed) && (metas || errorState.failed) && (paquetes || errorState.failed) && (clientes || errorState.failed)) setIsLoading(false)
+  }, [sales, metas, paquetes, clientes, errorState, isLoading])
+
+  const componentProps = { ...props, sales, metas, paquetes, clientes } //manda a llamar los datos
 
   return withSpinner(isLoading)(withError(errorState.failed, errorState.message)(Component))(componentProps)
 }

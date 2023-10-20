@@ -2,9 +2,13 @@ import React from 'react';
 import * as styles from './styles'
 import Typography from 'src/components/Typography';
 
+const Tabla = ({ goals = [] }) => {
+    const mesesArray = [
+        'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+        'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+      ];
 
-const Tabla = () => {
-    return(
+    return (
         <>
             <table>
                 <thead>
@@ -13,21 +17,22 @@ const Tabla = () => {
                         <styles.header><Typography type='paragraph1'>Año</Typography></styles.header>
                         <styles.header><Typography type='paragraph1'>Meta general a alcanzar</Typography></styles.header>
                         <styles.header><Typography type='paragraph1'>Meta individual</Typography></styles.header>
-                        <styles.header><Typography type='paragraph1'>total acumulado</Typography></styles.header>
+                        <styles.header><Typography type='paragraph1'>Total acumulado</Typography></styles.header>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <styles.data><Typography type='paragraph1'>Octubre</Typography></styles.data>
-                        <styles.data><Typography type='paragraph1'>2023</Typography></styles.data>
-                        <styles.data><Typography type='paragraph1'>8,000.00</Typography></styles.data>
-                        <styles.data><Typography type='paragraph1'>2,000.00</Typography></styles.data>
-                        <styles.data><Typography type='paragraph1'>10,000.00</Typography></styles.data>
-                    </tr>
+                    {goals.map((meta, index) => (
+                        <tr key={index}>
+                            <styles.data><Typography type='paragraph1'>{mesesArray[meta.mes - 1]}</Typography></styles.data>
+                            <styles.data><Typography type='paragraph1'>{meta.anio}</Typography></styles.data>
+                            <styles.data><Typography type='paragraph1'>{meta.metaAlcanzar.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</Typography></styles.data>
+                            <styles.data><Typography type='paragraph1'>{meta.metaIndividual.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</Typography></styles.data>
+                            <styles.data><Typography type='paragraph1'>0</Typography></styles.data>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </>
-        
     )
 }
 

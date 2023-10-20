@@ -7,7 +7,6 @@ import { getIsAuthenticated, setAccessToken, setProfile, setRefreshToken } from 
 import getHttpError from 'src/utils/getHttpError';
 import { Navigate } from 'react-router-dom';
 import httpClient from 'src/utils/httpClient';
-// Estilos
 import { Contenido } from './styles'
 import { LogoContainer } from './styles'
 

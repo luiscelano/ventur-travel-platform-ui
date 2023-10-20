@@ -11,6 +11,7 @@ import Goal from 'src/components/displaygoal'
 const Sales = (props) => {
   console.log('sales', props.sales)
   console.log('metas', props.metas)
+  console.log('paquetes', props.paquetes)
   return (
     <>
       <styles.Contenido>

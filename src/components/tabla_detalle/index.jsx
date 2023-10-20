@@ -3,7 +3,16 @@ import * as styles from './styles'
 import Typography from 'src/components/Typography';
 
 
-const Tabla_detalle = ({ sales = []}) => {
+const Tabla_detalle = ({ sales, selectedIndex = []}) => {
+    const nombre_paquete = sales[selectedIndex].paquete.nombre;
+    const turistas = sales[selectedIndex].cantidadTuristas;
+    const fechaini = sales[selectedIndex].paquete.fechaInicio;
+    const fechafin = sales[selectedIndex].paquete.fechaFin;
+    const pais = sales[selectedIndex].pais.descripcion;
+    const cantidad = sales[selectedIndex].cantidadPaquetes;
+    const precio = sales[selectedIndex].paquete.precio;
+    console.log('cantidad ', cantidad)
+    //console.log('index traido ', selectedIndex)
     return(
         <>
             <table>
@@ -19,18 +28,15 @@ const Tabla_detalle = ({ sales = []}) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {sales.map((sale) => (
                     <tr>
-                        <styles.data><Typography type='paragraph2'>{sale.paquete.nombre}</Typography></styles.data>
-                        <styles.data><Typography type='paragraph2'>{sale.cantidadTuristas}</Typography></styles.data>
-                        <styles.data><Typography type='paragraph2'></Typography></styles.data>
-                        <styles.data><Typography type='paragraph2'></Typography></styles.data>
-                        <styles.data><Typography type='paragraph2'>{sale.pais.descripcion}</Typography></styles.data>
-                        <styles.data><Typography type='paragraph2'>{sale.cantidadPaquetes}</Typography></styles.data>
-                        <styles.data><Typography type='paragraph2'></Typography></styles.data>
+                        <styles.data><Typography type='paragraph2'>{nombre_paquete}</Typography></styles.data>
+                        <styles.data><Typography type='paragraph2'>{turistas}</Typography></styles.data>
+                        <styles.data><Typography type='paragraph2'></Typography>{fechaini}</styles.data>
+                        <styles.data><Typography type='paragraph2'></Typography>{fechafin}</styles.data>
+                        <styles.data><Typography type='paragraph2'>{pais}</Typography></styles.data>
+                        <styles.data><Typography type='paragraph2'>{cantidad}</Typography></styles.data>
+                        <styles.data><Typography type='paragraph2'></Typography>{precio}</styles.data>
                     </tr>
-                    ))}
-                    
                 </tbody>
             </table>
         </>

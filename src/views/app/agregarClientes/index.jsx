@@ -8,6 +8,7 @@ import { Form } from './styles'
 import { Input } from './styles'
 import { Espacio } from './styles'
 import { Input2 } from './styles'
+import { Cliente } from './styles'
 import httpClient from 'src/utils/httpClient'
 
 const ClientesMod = () => {
@@ -53,12 +54,16 @@ const ClientesMod = () => {
         <Typography type="paragraph2">
           <Input2 id="dpi" type="text" placeholder="DPI" onChange={onChange} />
           <Input id="nombre" type="text" placeholder="Nombre" onChange={onChange} />
-
-          <Input2 id="tipo" list="opciones" name="Tipo" placeholder="Selecciona una opción" onChange={onChange} />
+          <Cliente id="tipo" onChange={onChange}>
+              <option value="" disabled selected><Typography type='paragraph1'>tipo de cliente</Typography></option>
+              <option value={1}>Agencia</option>
+              <option value={2}>Cliente Final</option>
+          </Cliente>
+          {/* <Input2 id="tipo" list="opciones" name="Tipo" placeholder="Selecciona una opción" onChange={onChange} />
           <datalist id="opciones">
             <option value={1} label="Agencia"></option>
             <option value={2} label="Cliente final"></option>
-          </datalist>
+          </datalist> */}
 
           <Input id="telefono" type="number" placeholder="Telefono" onChange={onChange} />
 

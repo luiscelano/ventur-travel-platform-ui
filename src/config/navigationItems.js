@@ -1,5 +1,6 @@
 import BoxIcon from 'src/assets/icons/BoxIcon'
 import HomeIcon from 'src/assets/icons/HomeIcon'
+import goalIcon from 'src/assets/icons/pocket'
 import ProfileGroupIcon from 'src/assets/icons/ProfileGroupIcon'
 import ProfileIcon from 'src/assets/icons/ProfileIcon'
 import PurseIcon from 'src/assets/icons/PurseIcon'
@@ -32,10 +33,16 @@ const navigationItems = [
     redirect: '/app/packages',
     Icon: BoxIcon
   },
-  {
+  /* {
     id: 5,
     label: 'Metas',
     redirect: '/app/metas',
+    Icon: goalIcon
+  }, */
+  {
+    id: 5,
+    label: 'Clientes',
+    redirect: '/app/queryCustomer',
     Icon: ProfileGroupIcon
   }
 ]
@@ -53,7 +60,14 @@ const getNavigationItems = () => {
       label: 'Permisos',
       redirect: '/app/options',
       Icon: SecurityIcon
+    },
+    {
+      id: 7,
+      label: 'Metas',
+      redirect: '/app/metas',
+      Icon: goalIcon
     })
+    
   }
   return navigationItems
 }
