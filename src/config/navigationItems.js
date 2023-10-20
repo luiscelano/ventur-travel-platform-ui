@@ -47,29 +47,28 @@ const navigationItems = [
   }
 ]
 
-const getNavigationItems = () => {
-  const userType = getUserType()
-  console.log('userType', userType)
-  console.log(userType === (userTypes.administrador || userTypes.jefe))
-  if (
-    (userType === userTypes.administrador || userType === userTypes.jefe) &&
-    !navigationItems.find(({ id }) => id === 6)
-  ) {
-    navigationItems.push({
-      id: 6,
-      label: 'Permisos',
-      redirect: '/app/options',
-      Icon: SecurityIcon
-    },
-    {
-      id: 7,
-      label: 'Metas',
-      redirect: '/app/metas',
-      Icon: goalIcon
-    })
-    
+const adminNavigationItems = [
+  {
+    id: 6,
+    label: 'Permisos',
+    redirect: '/app/options',
+    Icon: SecurityIcon
+  },
+  {
+    id: 7,
+    label: 'Metas',
+    redirect: '/app/metas',
+    Icon: goalIcon
   }
-  return navigationItems
+]
+
+const getNavigationItems = () => {
+  let items = [...navigationItems]
+  const userType = getUserType()
+  if (userType === userTypes.administrador || userType === userTypes.jefe) {
+    items = [...items, ...adminNavigationItems]
+  }
+  return items
 }
 
 export default getNavigationItems
