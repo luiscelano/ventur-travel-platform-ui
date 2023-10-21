@@ -4,42 +4,39 @@ import { Contenido } from './styles'
 import { Table } from './styles'
 import { Header } from './styles'
 import { Row } from './styles'
+import withSubsidiaries from 'src/containers/subsidiaries/withSubsidiaries'
 
-const Subsidiaries = () => {
+const Subsidiaries = (props) => {
+  const contactos = props.subsidiary
   return (
-    <Contenido>
-        <Typography type="title" color="dark">Contactos</Typography>
-        {/* <Link to='/app/agregarClientes'>
-            <Button>Agregar nuevo Cliente</Button>
-        </Link> */}
-        <Table>
-          <tr>
-            <Header>Nombre</Header>
-            <Header>Telefono</Header>
-            <Header>Fecha de creación</Header>
-          </tr>
-        {/* {detalle_clientes.map((cliente) => (
-            <tr>
-            <Row>{cliente.nombre}</Row>
-            <Row>{cliente.dpi}</Row>
-            <Row>{cliente.tipoCliente.descripcion}</Row>
-            <Row>{cliente.telefono}</Row>
-            <Row>{cliente.direccion}</Row>
-            <Row>{cliente.correo}</Row>
-            <Row>{cliente.tipoCliente.updatedAt}</Row>
-          </tr>
-        ))} */}
-          <tr>
-            <Row>John Doe</Row>
-            <Row>Cliente Premium</Row>
-            <Row>555-123-4567</Row>
-            <Row>123 Main St</Row>
-            <Row>john@example.com</Row>
-            <Row>Activo</Row>
-          </tr>
-        </Table>
-    </Contenido>
+    <>
+      {Object.keys(contactos).length > 0 ?
+        <Contenido>
+            <Typography type="title" color="dark">Contactos</Typography>
+            {/* <Link to='/app/agregarClientes'>
+                <Button>Agregar nuevo Cliente</Button>
+            </Link> */}
+            <Table>
+              <tr>
+                <Header>Nombre</Header>
+                <Header>Telefono</Header>
+                <Header>Fecha de creación</Header>
+              </tr>
+            {contactos.map((contacto) => (
+              <tr>
+                <Row>{contacto.nombre}</Row>
+                <Row>{contacto.telefono}</Row>
+                <Row>{contacto.createdAt}</Row>
+              </tr>
+            ))} 
+            </Table>
+        </Contenido>
+      : 
+      <Contenido>
+        <Typography type="paragraph1">no hay contactos agregados por el momento</Typography>
+      </Contenido>}
+    </>
   )
 }
 
-export default Subsidiaries
+export default withSubsidiaries(Subsidiaries)
