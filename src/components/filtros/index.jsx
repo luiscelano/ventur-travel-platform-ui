@@ -81,7 +81,7 @@ const Filtros = (props) => {
         
         : <styles.Contenido>
             <styles.advertencia>
-                <Typography type="paragraph1">no hay ventas registradas por el momento, ingresa una venta!</Typography>
+                <Typography type="paragraph1">hubo un error al intentar obtener ventas</Typography>
             </styles.advertencia>
           </styles.Contenido>}
         </>

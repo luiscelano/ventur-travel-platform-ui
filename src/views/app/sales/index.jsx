@@ -22,7 +22,7 @@ const Sales = (props) => {
   return (
     <>
       <styles.Contenido>
-        <Typography type="title">Cartera</Typography>
+        <Typography type="title" color='dark'>Cartera</Typography>
         <Typography type="paragraph2">Visualiza las metas realizadas durante el mes</Typography>
         <Goal metas={props.metas}></Goal>
         <Link to='/app/AddSales'>

@@ -33,7 +33,7 @@ const Sales = (props) => {
       return (
         <>
           <styles.Contenido>
-            <Typography type='title'>Detalle de Ventas</Typography>
+            <Typography type='title' color="dark">Detalle de Ventas</Typography>
             <styles.vendedor><Typography type='paragraph1'>Vendedor: {nombre_completo} </Typography></styles.vendedor>
             <styles.cliente><Typography type='paragraph1'>Cliente: {cliente}</Typography></styles.cliente>
             <Tabla_detalle sales={props.sales} selectedIndex={index}></Tabla_detalle>
@@ -44,7 +44,7 @@ const Sales = (props) => {
       return (
         <>
           <styles.Contenido>
-            <Typography type='title'>Detalle de Ventas</Typography>
+            <Typography type='title' color="dark">Detalle de Ventas</Typography>
             <styles.vendedor><Typography type='paragraph1'>no se pudo obtener el detalle </Typography></styles.vendedor>
           </styles.Contenido>
         </>
