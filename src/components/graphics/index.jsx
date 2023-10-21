@@ -1,12 +1,17 @@
 import React, { useEffect, useRef }  from 'react'
 //import * as styles from './styles'
-//import Typography from 'src/components/Typography'
+import Typography from 'src/components/Typography'
 //import { getProfile } from 'src/utils/storage'
 import withSales from 'src/containers/sales/withSales'
 import Chart from 'chart.js/auto';
+import { CustomParagraph1 } from '../Typography/styles';
 
 const Grafica = (props) => {
     const datos_ventas = props.sales;
+    const datos_metas = props.metas;
+    console.log('largo ', datos_ventas.length)
+    console.log('largo metas', datos_metas.length)
+
     const chartContainer = useRef(null);
     const chartInstance = useRef(null);
 
@@ -43,12 +48,15 @@ const Grafica = (props) => {
         }else{
             console.log('no hay datos')
         }
-      }, [datos_ventas]);
+      }, [datos_ventas]); 
 
       
   return (
     <>
-      <canvas ref={chartContainer} id="salesChart" width="450" height="150"></canvas>
+      {Object.keys(datos_ventas).length > 0 ?
+        <canvas ref={chartContainer} id="salesChart" width="450" height="150"></canvas>
+      : <p><Typography type="paragraph1">no hay ventas por el momento, registra tu primera venta!</Typography></p>}
+      
     </>
   )
 }

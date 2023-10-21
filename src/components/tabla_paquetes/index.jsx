@@ -6,9 +6,9 @@ import { useNavigate } from 'react-router-dom'
 const tablaPaquetes = ({ paquetes = [] }) => {
     console.log(paquetes)
     const navigate = useNavigate()
-    const onRowClick = () => {
+    const onRowClick = (idPaquete) => {
         console.log('row clicked')
-        return navigate('/app/packages')
+        return navigate('/app/Packagesdetails', {state: {idPaquete}});
     }
     return (
         <>
@@ -37,7 +37,8 @@ const tablaPaquetes = ({ paquetes = [] }) => {
                 </thead>
                 <tbody>
                     {paquetes.map((paquete) => (
-                        <tr onClick={onRowClick} style={{ cursor: 'pointer' }}>
+                       /*  <tr onClick={onRowClick} style={{ cursor: 'pointer' }}> */
+                        <tr onClick={() => onRowClick(paquete.idPaquete)} style={{ cursor: 'pointer' }}>
                             <styles.data>
                                 <Typography type="paragraph2">{paquete.nombre}</Typography>
                             </styles.data>
@@ -54,7 +55,7 @@ const tablaPaquetes = ({ paquetes = [] }) => {
                                 <Typography type="paragraph2">{paquete.cantidadNoches}</Typography>
                             </styles.data>
                             <styles.data>
-                                <Typography type="paragraph2">{paquete.precio}</Typography>
+                                <Typography type="paragraph2">Q{Number(paquete.precio).toFixed(2)}</Typography>
                             </styles.data>
                         </tr>
                     ))}

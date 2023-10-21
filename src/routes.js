@@ -20,6 +20,7 @@ import SignUpView from 'src/views/auth/signup'
 import OptionsView from 'src/views/app/options'
 import UsersView from 'src/views/app/permissions'
 import AddSales from './views/app/createCartera'
+import Packagesdetails from './views/app/packages_details'
 
 const routes = createBrowserRouter([
   {
@@ -87,6 +88,9 @@ const routes = createBrowserRouter([
       },{
         path: 'addSales',
         Component: AddSales
+      },{
+        path: 'Packagesdetails',
+        Component: Packagesdetails
       },
       {
         path: 'options',
