@@ -79,5 +79,16 @@ export const ButtonDiv = styled.button `
         transition: .5s;
     }
 `
+export const advertencia = styled.p `
+    border-radius: 30px;
+    border: none;
+    margin: 0.5rem;
+    padding: 1rem;
+    padding-right: 3rem;
+    background-color: ${(props) => props.theme.color.light };
+    ::placeholder {
+        color: black;
+    }
+`
 
 //el tipo de letra al boton se le agrega en el index.jsx

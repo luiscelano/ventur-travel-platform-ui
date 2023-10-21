@@ -19,14 +19,6 @@ const displayGoal = ({metas = []}) => {
                   <Typography type="paragraph1">no posees una meta asignada por el momento</Typography>
               </styles.avance>
             </styles.Contenido>}
-              {/* <styles.Contenido>
-                  <styles.meta>
-                      <Typography type="paragraph1">Meta del mes: {metas.meta_alcanzar}</Typography>
-                  </styles.meta>
-                  <styles.avance>
-                      <Typography type="paragraph1">Avance de la meta: {metas.meta_acumulada}</Typography>
-                  </styles.avance>
-              </styles.Contenido> */}
       </>
     )
   }
