@@ -17,3 +17,8 @@ export const contenedor = styled.section `
    padding: 20px;
    text-align: center;
 `
+
+export const topInformacion = styled.section `
+   display: flex;
+   flex-direction: row;
+`

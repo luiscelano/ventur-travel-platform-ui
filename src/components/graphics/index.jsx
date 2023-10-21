@@ -1,7 +1,7 @@
 import React, { useEffect, useRef }  from 'react'
-import * as styles from './styles'
-import Typography from 'src/components/Typography'
-import { getProfile } from 'src/utils/storage'
+//import * as styles from './styles'
+//import Typography from 'src/components/Typography'
+//import { getProfile } from 'src/utils/storage'
 import withSales from 'src/containers/sales/withSales'
 import Chart from 'chart.js/auto';
 

@@ -3,10 +3,11 @@ import * as styles from './styles'
 import Typography from 'src/components/Typography'
 import { getProfile } from 'src/utils/storage'
 import Grafica from 'src/components/graphics'
+import TopVendedor from 'src/components/topVendedores'
+import TopPaquetes from 'src/components/topPaquetes'
 
 const Home = () => {
   const user = getProfile()
-  console.log('user ', user)
   return (
     <>
       <styles.Contenido>
@@ -14,6 +15,10 @@ const Home = () => {
         <styles.contenedor>
           <Grafica></Grafica>
         </styles.contenedor>
+        <styles.topInformacion>
+          <TopPaquetes></TopPaquetes>
+          <TopVendedor></TopVendedor>
+        </styles.topInformacion>
       </styles.Contenido>
     </>
   )
