@@ -3,10 +3,12 @@ import * as styles from './styles'
 import Typography from '../Typography';
 import Tabla_cartera from 'src/components/tabla_cartera'
 import withFilters from 'src/containers/filters/withFilters'
+import { getProfile } from 'src/utils/storage'
 
 //const Button = (props) => {
 const Filtros = (props) => {
-    console.log('vendedores ', props.users)
+    const user = getProfile()
+    console.log('vendedores ')
     const vendedores = props.users
     const clientes = props.clientes
     const mesesDelAnio = [
@@ -31,7 +33,6 @@ const Filtros = (props) => {
     };
 
     const anios = obtenerAnios();
-    //const {text} = props
     return (
         <>
         <styles.Contenido>
@@ -52,12 +53,19 @@ const Filtros = (props) => {
                         </option>
                     ))}
                 </styles.anio>
-                <styles.vendedor name='vendedor' value={props.vendedor_filtro} onChange={(e) => props.setPorVendedor(e.target.value)}>
+                { user.id_tipo_usuario === 2 || user.id_tipo_usuario === 3 ? 
+                    <styles.vendedor name='vendedor' value={props.vendedor_filtro} onChange={(e) => props.setPorVendedor(e.target.value)}>
+                        <option value="" disabled selected><Typography type='paragraph1'>vendedor</Typography></option>
+                        {vendedores.map((vendedor) => (
+                            <option value={vendedor.idUsuario}>{vendedor.nombre},{vendedor.apellido}</option>
+                        ))}
+                    </styles.vendedor> : <p>hubo un error :s</p> } 
+                {/* {<styles.vendedor name='vendedor' value={props.vendedor_filtro} onChange={(e) => props.setPorVendedor(e.target.value)}>
                     <option value="" disabled selected><Typography type='paragraph1'>vendedor</Typography></option>
                     {vendedores.map((vendedor) => (
-                        <option value={vendedor.idUsuario}>{vendedor.nombre},{vendedor.apellido}</option>
+                        <option value={vendedor.idUsuario}>{vendedor.nombre} {vendedor.apellido}</option>
                     ))}
-                </styles.vendedor>
+                </styles.vendedor>} */}
                 <styles.cliente name='cliente' value={props.clientes_filtro} onChange={(e) => props.setPorCliente(e.target.value)}>
                     <option value="" disabled selected><Typography type='paragraph1'>cliente</Typography></option>
                     {clientes.map((cliente) => (

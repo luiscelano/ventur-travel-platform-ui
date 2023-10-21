@@ -2,6 +2,8 @@ import { useEffect, useState, useRef, useCallback } from 'react'
 import withSpinner from 'src/containers/spinner/withSpinner'
 import httpClient from 'src/utils/httpClient'
 import withError from 'src/containers/error/withError'
+import getUserType from 'src/utils/getUserType'
+import userTypes from 'src/utils/userTypes'
 
 const withFilters = (Component) => (props) => {
     const [isLoading, setIsLoading] = useState(true)
@@ -54,25 +56,36 @@ const withFilters = (Component) => (props) => {
 
   //---------------------------------------------------------------------------------
   //CONSULTAR A USUARIOS Y CLIENTES PARA SELECT -------------------------------------
-
+    const userType = getUserType()
     const [users, setUsers] = useState(null)
     const componentRef = useRef(false)
-    const getUsers = useCallback(async () => {
-      setIsLoading(true)
-      try {
-        const response = await httpClient.get('/usuarios')
-        if (response.status === 200) {
-          setUsers(response.data.usuarios)
+    if (userType === userTypes.administrador || userType === userTypes.jefe) {
+      const getUsers = useCallback(async () => {
+        setIsLoading(true)
+        try {
+          const response = await httpClient.get('/usuarios')
+          if (response.status === 200) {
+            setUsers(response.data.usuarios)
+          }
+        } catch (error) {
+          console.error('httpClient error:', error)
+          console.log('error en users')
+          setErrorState({
+            failed: true,
+            message: error.message
+          })
         }
-      } catch (error) {
-        console.error('httpClient error:', error)
-        setErrorState({
-          failed: true,
-          ...getHttpError(error)
-        })
-      }
-    }, [])
+      }, [])
 
+      useEffect(() => {
+        if (componentRef.current) return
+        componentRef.current = true
+        getUsers()
+      }, [getUsers])
+    }else{
+        console.log('no se puede ver vendedor')
+    }
+    
     const [clientes, setClientes] = useState(null)
     const clientesRef = useRef(false)
 
@@ -84,18 +97,13 @@ const withFilters = (Component) => (props) => {
         }
       } catch (error) {
         console.error('httpClient error:', error)
+        console.log('error en cliente')
         setErrorState({
           failed: true,
           message: error.message
         })
       }
     }, [])
-
-    useEffect(() => {
-      if (componentRef.current) return
-      componentRef.current = true
-      getUsers()
-    }, [getUsers])
 
     useEffect(() => {
       if (clientesRef.current) return
@@ -124,6 +132,7 @@ const withFilters = (Component) => (props) => {
         }
       } catch (error) {
         console.error('httpClient error:', error)
+        console.log('error en vendedor')
         setErrorState({
           failed: true,
           message: error.message
@@ -188,7 +197,7 @@ const withFilters = (Component) => (props) => {
   //---------------------------------------------------------------------------------
   
     useEffect(() => {
-      if (isLoading && (sales || errorState.failed) && (users || errorState.failed) && (clientes || errorState.failed)) setIsLoading(false)
+      if (isLoading && (sales || errorState.failed) && (clientes || errorState.failed)) setIsLoading(false)
     }, [sales, errorState, isLoading])
 
     const componentProps = { ...props, mes_filtro, anio_filtro, vendedor_filtro, clientes_filtro, sales, users, clientes, setAnio, setMes, setPorVendedor, setPorCliente } //manda a llamar los datos
