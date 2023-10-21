@@ -4,6 +4,8 @@ import { Contenido } from './styles'
 import { Table } from './styles'
 import { Header } from './styles'
 import { Row } from './styles'
+import { Link } from 'react-router-dom'
+import Button from 'src/components/Button'
 import withSubsidiaries from 'src/containers/subsidiaries/withSubsidiaries'
 
 const Subsidiaries = (props) => {
@@ -13,9 +15,9 @@ const Subsidiaries = (props) => {
       {Object.keys(contactos).length > 0 ?
         <Contenido>
             <Typography type="title" color="dark">Contactos</Typography>
-            {/* <Link to='/app/agregarClientes'>
-                <Button>Agregar nuevo Cliente</Button>
-            </Link> */}
+            <Link to='/app/agregarContactos'>
+              <Button>Agregar nuevo Contacto</Button>
+            </Link>
             <Table>
               <tr>
                 <Header>Nombre</Header>

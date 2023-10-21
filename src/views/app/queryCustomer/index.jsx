@@ -19,13 +19,6 @@ const QueryCustomer = (props) => {
         <Typography type="title" color="dark">
           Detalle de Clientes
         </Typography>
-        {/* <Typography type="paragraph2">Consulta de clientes</Typography> */}
-        {/* <Section1>
-          <Typography type="paragraph1" size="small">
-            Cliente
-          </Typography>
-          <Field size="large" color="background1"></Field>
-        </Section1> */}
         <Link to='/app/agregarClientes'>
             <Button>Agregar nuevo Cliente</Button>
         </Link>
@@ -50,14 +43,6 @@ const QueryCustomer = (props) => {
             <Row>{cliente.tipoCliente.updatedAt}</Row>
           </tr>
         ))}
-          {/* <tr>
-            <Row>John Doe</Row>
-            <Row>Cliente Premium</Row>
-            <Row>555-123-4567</Row>
-            <Row>123 Main St</Row>
-            <Row>john@example.com</Row>
-            <Row>Activo</Row>
-          </tr> */}
         </Table>
       </Contenido>
     </>
