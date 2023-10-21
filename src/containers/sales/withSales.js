@@ -95,7 +95,7 @@ const withSales = (Component) => (props) => {
     metasRef.current = true
     setIsLoading(true)
     getmetas()
-  }, [getmetas])
+  }, [getmetas]) //estos son elementos a los que debe escuchar, si se deja vacio solo se va a activar la primera vez que el elemento se cargue
 
   useEffect(() => {
     if (paquetesRef.current) return
