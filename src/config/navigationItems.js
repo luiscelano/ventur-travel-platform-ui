@@ -7,6 +7,7 @@ import PurseIcon from 'src/assets/icons/PurseIcon'
 import SecurityIcon from 'src/assets/icons/SecurityIcon'
 import getUserType from 'src/utils/getUserType'
 import userTypes from 'src/utils/userTypes'
+import phoneIcon from 'src/assets/icons/phoneIcon'
 
 const navigationItems = [
   {
@@ -44,18 +45,25 @@ const navigationItems = [
     label: 'Clientes',
     redirect: '/app/queryCustomer',
     Icon: ProfileGroupIcon
+  },
+  {
+    id: 6,
+    label: 'Contactos',
+    redirect: '/app/contactos',
+    Icon: phoneIcon
   }
+  
 ]
 
 const adminNavigationItems = [
   {
-    id: 6,
+    id: 7,
     label: 'Permisos',
     redirect: '/app/options',
     Icon: SecurityIcon
   },
   {
-    id: 7,
+    id: 8,
     label: 'Metas',
     redirect: '/app/metas',
     Icon: goalIcon

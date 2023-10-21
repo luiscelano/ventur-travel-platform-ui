@@ -21,6 +21,7 @@ import OptionsView from 'src/views/app/options'
 import UsersView from 'src/views/app/permissions'
 import AddSales from './views/app/createCartera'
 import Packagesdetails from './views/app/packages_details'
+import Subsidiaries from './views/app/subsidiaries'
 
 const routes = createBrowserRouter([
   {
@@ -91,6 +92,10 @@ const routes = createBrowserRouter([
       },{
         path: 'Packagesdetails',
         Component: Packagesdetails
+      },
+      ,{
+        path: 'contactos',
+        Component: Subsidiaries
       },
       {
         path: 'options',
