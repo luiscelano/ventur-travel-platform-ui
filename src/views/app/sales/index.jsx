@@ -4,6 +4,7 @@ import Button from 'src/components/Button'
 import Typography from 'src/components/Typography'
 import Filtros from 'src/components/filtros'
 import { Link } from 'react-router-dom'
+//import withGoals from 'src/containers/goals/withGoals'
 import withSales from 'src/containers/sales/withSales'
 import Goal from 'src/components/displaygoal'
 import getUserType from 'src/utils/getUserType'
@@ -24,7 +25,7 @@ const Sales = (props) => {
       <styles.Contenido>
         <Typography type="title" color='dark'>Cartera</Typography>
         <Typography type="paragraph2">Visualiza las metas realizadas durante el mes</Typography>
-        <Goal metas={props.metas}></Goal>
+        <Goal sales={props.metas}></Goal>
         <Link to='/app/AddSales'>
             <Button>Agregar nueva venta</Button>
         </Link>

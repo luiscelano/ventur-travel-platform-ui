@@ -36,6 +36,9 @@ const Subsidiaries = (props) => {
       : 
       <Contenido>
         <Typography type="paragraph1">no hay contactos agregados por el momento</Typography>
+        <Link to='/app/agregarContactos'>
+          <Button>Agregar nuevo Contacto</Button>
+        </Link>
       </Contenido>}
     </>
   )

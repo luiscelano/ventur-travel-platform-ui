@@ -35,6 +35,7 @@ const withGoals = (Component) => (props) => {
     if (isLoading || errorState.failed) setIsLoading(false)
   }, [goals, errorState, isLoading])
 
+  //const componentProps = { ...props, goals, getGoals }
   const componentProps = { ...props, goals, getGoals }
 
   return withSpinner(isLoading)(withError(errorState.failed, errorState.message)(Component))(componentProps)

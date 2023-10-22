@@ -56,13 +56,16 @@ const Filtros = (props) => {
                             </option>
                         ))}
                     </styles.anio>
-                    { user.id_tipo_usuario === 2 || user.id_tipo_usuario === 3 &&
-                        <styles.vendedor name='vendedor' value={props.vendedor_filtro} onChange={(e) => props.setPorVendedor(e.target.value)}>
-                            <option value="" disabled selected><Typography type='paragraph1'>vendedor</Typography></option>
-                            {vendedores.map((vendedor) => (
-                                <option value={vendedor.idUsuario}>{vendedor.nombre},{vendedor.apellido}</option>
-                            ))}
-                        </styles.vendedor>} 
+                    {typeof vendedores === 'object' && vendedores !== null &&  
+                       
+                            <styles.vendedor name='vendedor' value={props.vendedor_filtro} onChange={(e) => props.setPorVendedor(e.target.value)}>
+                                <option value="" disabled selected><Typography type='paragraph1'>vendedor</Typography></option>
+                                {vendedores.map((vendedor) => (
+                                    <option value={vendedor.idUsuario}>{vendedor.nombre},{vendedor.apellido}</option>
+                                ))}
+                            </styles.vendedor>
+                    }
+                    
                     {/* {<styles.vendedor name='vendedor' value={props.vendedor_filtro} onChange={(e) => props.setPorVendedor(e.target.value)}>
                         <option value="" disabled selected><Typography type='paragraph1'>vendedor</Typography></option>
                         {vendedores.map((vendedor) => (
