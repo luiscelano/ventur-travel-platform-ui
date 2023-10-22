@@ -3,14 +3,16 @@ import * as styles from './styles'
 import Typography from 'src/components/Typography'
 import Button from 'src/components/Button'
 import Tabla from 'src/components/tabla_metas'
-import withGoals from 'src/containers/goals/withGoals'
+//import withGoals from 'src/containers/goals/withGoals'
 import Field from 'src/components/Field'
 import Select from 'src/components/Select'
 import { toast } from 'react-toastify'
 import getHttpError from 'src/utils/getHttpError';
 import httpClient from 'src/utils/httpClient';
 
-const Metas = (props) => {
+const Metas = () => {
+  /* const datos_metas = props.goals
+  console.log('metas ', datos_metas) */
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const [values, setValues] = useState({
@@ -49,7 +51,7 @@ const Metas = (props) => {
             mes: ''
           });
           // Recarga la tabla de metas
-          props.getGoals();
+          //props.getGoals();
         }
       } catch (error) {
         const errorMessage = getHttpError(error).message;
@@ -120,10 +122,11 @@ const Metas = (props) => {
 
           <Button onClick={onSubmit} disabled={isSubmitting}>{!isSubmitting ? 'Ingresar' : 'Cargando...'}</Button>
         </styles.infometas>
-        <Tabla goals={props.goals}></Tabla>
+          <Tabla></Tabla>
       </styles.Contenido>
     </>
   )
 }
 
-export default withGoals(Metas)
+/* export default withGoals(Metas) */
+export default Metas

@@ -2,20 +2,23 @@ import { useEffect, useState, useRef, useCallback } from 'react'
 import withSpinner from 'src/containers/spinner/withSpinner'
 import httpClient from 'src/utils/httpClient'
 import withError from 'src/containers/error/withError'
+//use state permite modificar datos dentro del dom sin que afecte la pagina
 
-const withGoals = (Component) => (props) => {
+const withSubsidiaries = (Component) => (props) => {
   const [isLoading, setIsLoading] = useState(true)
   const [errorState, setErrorState] = useState({
     failed: false,
     message: null
   })
-  const [goals, setGoals] = useState([]) 
+  //setSales es un evento que asigna la venta
+  const [subsidiary, setSubsidiary] = useState(null)
+  const subsidiaryRef = useRef(false)
 
-  const getGoals = useCallback(async () => {
+  const getSubsidiaries = useCallback(async () => {
     try {
-      const response = await httpClient.get('/metas/all') 
+      const response = await httpClient.get('/contactos')
       if (response.status === 200) {
-        setGoals(response.data.metas || []);
+        setSubsidiary(response.data.contactos)
       }
     } catch (error) {
       console.error('httpClient error:', error)
@@ -27,18 +30,19 @@ const withGoals = (Component) => (props) => {
   }, [])
 
   useEffect(() => {
+    if (subsidiaryRef.current) return
+    subsidiaryRef.current = true
     setIsLoading(true)
-    getGoals()
-  }, [getGoals])
+    getSubsidiaries()
+  }, [getSubsidiaries])
 
   useEffect(() => {
-    if (isLoading || errorState.failed) setIsLoading(false)
-  }, [goals, errorState, isLoading])
+    if (isLoading && (subsidiary || errorState.failed)) setIsLoading(false)
+  }, [subsidiary, errorState, isLoading])
 
-  //const componentProps = { ...props, goals, getGoals }
-  const componentProps = { ...props, goals, getGoals }
+  const componentProps = { ...props, subsidiary } //manda a llamar los datos
 
   return withSpinner(isLoading)(withError(errorState.failed, errorState.message)(Component))(componentProps)
 }
 
-export default withGoals
+export default withSubsidiaries

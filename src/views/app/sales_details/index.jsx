@@ -6,21 +6,6 @@ import withSales from 'src/containers/sales/withSales'
 import { useParams } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
-/* const Sales = (props) => {
-  const {sales} = props;
-  console.log('sales', props.sales)
-  return (
-    <>
-      <styles.Contenido>
-        <Typography type='title'>Detalle de Ventas</Typography>
-        <styles.vendedor><Typography type='paragraph1'>Vendedor: {sales.cantidadTuristas}</Typography></styles.vendedor>
-        <styles.cliente><Typography type='paragraph1'>Cliente</Typography></styles.cliente>
-        <Tabla_detalle sales={props.sales}></Tabla_detalle>
-      </styles.Contenido>
-    </>
-  )
-} */
-
 const Sales = (props) => {
   const location = useLocation();
   const { idCartera } = location.state || {};
@@ -48,7 +33,7 @@ const Sales = (props) => {
       return (
         <>
           <styles.Contenido>
-            <Typography type='title'>Detalle de Ventas</Typography>
+            <Typography type='title' color="dark">Detalle de Ventas</Typography>
             <styles.vendedor><Typography type='paragraph1'>Vendedor: {nombre_completo} </Typography></styles.vendedor>
             <styles.cliente><Typography type='paragraph1'>Cliente: {cliente}</Typography></styles.cliente>
             <Tabla_detalle sales={props.sales} selectedIndex={index}></Tabla_detalle>
@@ -59,7 +44,7 @@ const Sales = (props) => {
       return (
         <>
           <styles.Contenido>
-            <Typography type='title'>Detalle de Ventas</Typography>
+            <Typography type='title' color="dark">Detalle de Ventas</Typography>
             <styles.vendedor><Typography type='paragraph1'>no se pudo obtener el detalle </Typography></styles.vendedor>
           </styles.Contenido>
         </>

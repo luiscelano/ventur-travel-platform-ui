@@ -41,7 +41,7 @@ const AddSales = (props) => {
   return (
     <>
       <styles.Contenido>
-        <Typography type="title">Agregar Venta</Typography>
+        <Typography type="title" color="dark">Agregar Venta</Typography>
         <Typography type="paragraph2">Ingresa los datos solicitados</Typography>
         <styles.Formulario onSubmit={onSubmit}>
           <styles.paquete id='id_paquete' onChange={onChange}>

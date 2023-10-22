@@ -1,19 +1,27 @@
 import React from 'react'
-import withExampleContent from 'src/containers/withExampleContent'
+import * as styles from './styles'
 import Typography from 'src/components/Typography'
 import { getProfile } from 'src/utils/storage'
+import Grafica from 'src/components/graphics'
+import TopVendedor from 'src/components/topVendedores'
+import TopPaquetes from 'src/components/topPaquetes'
 
 const Home = () => {
   const user = getProfile()
-  console.log('user ', user)
   return (
     <>
-      <Typography type="title" color="dark">
-        Bienvenido, {user.nombre}
-      </Typography>
-      <h1></h1>
+      <styles.Contenido>
+        <Typography type="title" color="dark">Buen día, {user.nombre}</Typography>
+        <styles.contenedor>
+          <Grafica></Grafica>
+        </styles.contenedor>
+        <styles.topInformacion>
+          <TopPaquetes></TopPaquetes>
+          <TopVendedor></TopVendedor>
+        </styles.topInformacion>
+      </styles.Contenido>
     </>
   )
 }
 
-export default withExampleContent(Home)
+export default Home
