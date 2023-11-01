@@ -5,13 +5,18 @@ import { getProfile } from 'src/utils/storage'
 import Grafica from 'src/components/graphics'
 import TopVendedor from 'src/components/topVendedores'
 import TopPaquetes from 'src/components/topPaquetes'
+import withSummary from 'src/containers/sales/withSummary'
 
-const Home = () => {
+const Home = (props) => {
+  const { getSalesSummary } = props
   const user = getProfile()
   return (
     <>
       <styles.Contenido>
-        <Typography type="title" color="dark">Buen día, {user.nombre}</Typography>
+        <Typography type="title" color="dark">
+          Buen día, {user.nombre}
+        </Typography>
+        <button onClick={getSalesSummary}>descargar reporte</button>
         <styles.contenedor>
           <Grafica></Grafica>
         </styles.contenedor>
@@ -24,4 +29,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default withSummary(Home)
